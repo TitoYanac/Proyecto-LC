@@ -1,5 +1,5 @@
-var text=document.getElementById("codigo");
-var codeLine=document.getElementById("codeLine");
+var text = document.getElementById("codigo");
+var codeLine = document.getElementById("codeLine");
 
 text.onscroll = function() {
 	var x = text.scrollTop;

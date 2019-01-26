@@ -5,8 +5,31 @@
 	<meta name="keywords" content="lenguajes y compiladores, curso, proyecto, lenguaje de programacion, lc++"> <!-- palabras clave para posicionamiento en buscadores -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- redimensiona la vista de la pagina web para cada tipo de dispositivo -->
 	<title>Proyecto LC ++</title>
+	<script  type="text/javascript" src="js/jquery-3.3.1.min.js"  ></script>
 	<link rel="stylesheet" type="text/css" href="css/reset.css">
 	<link rel="stylesheet" type="text/css" href="css/style.css">
+
+	<script>
+		$(document).ready(function(){
+	
+			//controles de eventos
+			$('#compilar-boton').click(function(){
+				compilarCodigo();
+			});
+
+			$('#tablaSimbolos-boton').click(function(){
+				tablaSimbolos();
+			});
+
+			function compilarCodigo(){
+				alert("holaaa");
+			}
+
+		});
+	</script>
+
+
+
 </head>
 <body>
 	<header>
