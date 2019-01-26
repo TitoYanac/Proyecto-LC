@@ -1,37 +1,39 @@
 body{ 
 	background-color: #ececec;
 }
+
 body > section {
 	display: inline-block;
     width: 100%;
     padding: 0 0 0 10px;
 }
+
 header > main {
 	text-align: center;
 	height: 100px;
 }
+
 header > main > figure ,header > main > h1 {
-	display: inline-block;
 	float: left;
 	margin: 0 0 0 4%;
 	height: 100px;
 	line-height: 100px;
 }
+
 header > main > figure > img {
 	width:100px;
 	height: 100px;
 }
 
-#AreaDCodigo,#AreaDCompilacion,#AreaDErrores {
-	display: inline-block;
+
+
+#areaCodigo {
+	position: relative;
 	float: left;
 	width: 49%;
 }
 
-#AreaDCodigo{
-	position: relative;
-}
-#AreaDCodigo > aside {
+#areaCodigo > aside {
 	overflow: hidden;
 	padding-top: 2px;
 	position: absolute;
@@ -40,34 +42,96 @@ header > main > figure > img {
     width: 30px;
     height: 410px;
 }
-#AreaDCodigo > aside > p{
+
+#areaCodigo > aside > p {
 	text-align: center;
     font-weight: bold;
     font-size: 12px;
     height: 16px;
     line-height: 16px;
 }
-#codeform > fieldset {
+
+#areaCodigo > #codeform > fieldset {
 	padding-right: 48px;
 }
-#codeform > fieldset > textarea {
+
+#areaCodigo > #codeform  > fieldset > textarea {
 	width: 100%;
 	height: 410px;
 	padding-left: 30px;
 	font-size: 12px;
     line-height: 16px;
 }
-#AreaDCompilacion,#AreaDErrores {
+
+#areaTablaSimbolos > fieldset {
+	position: relative;
+	width: 355px;
+	height: 431px;
+	left: 20px;
+}
+
+#areaTablaSimbolos > fieldset > textarea {
+	width: 100%;
+	height: 410px;
+	font-size: 12px;
+	line-height: 16px;
+}
+
+textarea {
+	resize: none;
+	overflow: scroll;
+}
+
+#areaCodigo > #areaCompilacion > fieldset {
+	float: left;
+	width: 96.6%;
+	left: 20px;
+}
+
+
+#areaCodigo > #areaCompilacion > fieldset > textarea {
+	width: 100%;
+	height: 120px;
+	font-size: 12px;
+	line-height: 16px;
+}
+
+#botones {
+	margin-top: 80px;
+}
+
+ #botones > #compilar-boton {
+	border-radius: 5px;
+	color: white;
+	background-color: #008CBA;
+	padding: 5px;
+	margin-left: 15px;
+	font-size: 20px;
+}
+
+#botones > #tablaSimbolos-boton {
+	border-radius: 5px;
+	color: white;
+	background-color: #4CAF50;
+	padding: 5px;
+	margin-left: 15px;
+	font-size: 20px;
+}
+
+/*
+#areaCompilacion,#areaErrores {
 	height: 217px;
 	border: 1px black solid;
 	margin-top: 7px;
 }
-#AreaDErrores{
+*/
+/*
+#areaErrores{
 }
-
+*/
 
 @media screen and (min-width: 600px) and (max-width: 900px) {
-	#AreaDCodigo,#AreaDCompilacion {
+	#areaCodigo,#areaCompilacion {
 		display: inline-block;
 		float: left;
 		width: 100%;

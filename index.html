@@ -18,20 +18,35 @@
 		</main>
 	</header>
 	<section>
-		<article id="AreaDCodigo">
+		<article id="areaCodigo">
 			<form id="codeform">
 				<fieldset>
 					<legend>Escribe tu Código aqui: </legend>
-					<textarea id="codigo" placeholder="Enter text here..." name="comment" form="codeform"></textarea>
+					<textarea id="codigo" placeholder="Ingrese el código..." name="comment" form="codeform"></textarea>
 				</fieldset>
-			</form>
+			</form>	
+			<article id="areaCompilacion">
+				<fieldset>
+					<legend>Resultados: </legend>
+					<textarea id="compilacion" placeholder="Compilación..." name="comment" form="codeform"></textarea>
+				</fieldset>
+			</article>
 			<aside id="codeLine"><p>1</p></aside>
 		</article>
-		<article id="AreaDCompilacion"></article>
-		<article id="AreaDErrores"></article>
+		<article id="areaTablaSimbolos">
+				<fieldset>
+					<legend>Tabla de Símbolos: </legend>
+					<textarea id="tablaSimbolos" placeholder="Tokens..."></textarea>
+						<div id="botones">
+							<input type="button" id="compilar-boton"  value="Compilar" />
+							<input type="button" id="tablaSimbolos-boton" value="Tabla de Símbolos" />				
+						</div>
+				</fieldset>
+	<!--
+		<article id="areaErrores"></article>
+		-->
 	</section>
 	<footer>
-		
 		<!-- JavaScript -->
 	    <script type="text/javascript" src="js/lcjs.js"></script>
 	</footer>
