@@ -1,0 +1,9 @@
+publico VY{
+
+   entero _tamanio := 100;
+
+   para(entero i:= 0, i:<_tamanio, i++)->{
+	
+        imprimir(i);
+   }
+YV}

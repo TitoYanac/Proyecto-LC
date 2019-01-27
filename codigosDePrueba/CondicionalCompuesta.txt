@@ -1,0 +1,12 @@
+publico VY{
+
+  entero variable1;
+  variable1 := 5;
+
+  sicumple (5 >: 4) ->{
+      imprime(“mayor que 4”);              
+  }sino{
+      imprime(“menor que 4”); 
+  };
+
+YV}

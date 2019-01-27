@@ -1,0 +1,10 @@
+PUBLIC VY{
+
+ entero variable1, variable2, variable3;
+	
+ variable1 := 5;
+ variable2 := 7;
+
+ variable3 := variable1 + variable2 ;
+
+YV}
