@@ -13,8 +13,20 @@
 		$(document).ready(function(){
 	
 			//controles de eventos
-			$('#compilar-boton').click(function(){
-				compilarCodigo();
+			$('#resultado-boton').click(function(){
+				resultado();
+			});
+
+			$('#analisisLexico-boton').click(function(){
+				analisisLexico();
+			});
+
+			$('#analisisSintactico-boton').click(function(){
+				analisisSintactico();
+			});
+
+			$('#analisisSemantico-boton').click(function(){
+				analisisSemantico();
 			});
 
 			$('#tablaSimbolos-boton').click(function(){
@@ -25,9 +37,10 @@
 				borrarCodigo();
 			});
 
+
 			function borrarCodigo(){
 
-				var codigoArea_text = $('#codigo')
+				var codigoArea_text = $('#codigo');
 
 				var codigoArea = codigoArea_text.val();
 
@@ -58,28 +71,61 @@
 		<article id="areaCodigo">
 			<form id="codeform">
 				<fieldset>
-					<legend>Escribe tu Código aqui: </legend>
+					<legend>Escribe tu Código aquí: </legend>
 					<textarea id="codigo" placeholder="Ingrese el código..." name="comment" form="codeform"></textarea>
 				</fieldset>
 			</form>	
-			<article id="areaCompilacion">
+			<article id="areaResultados">
 				<fieldset>
 					<legend>Resultados: </legend>
-					<textarea id="compilacion" placeholder="Compilación..." name="comment" form="codeform"></textarea>
+					<textarea id="resultados" placeholder="Resultados..." name="comment" form="codeform" disabled=true></textarea>
 				</fieldset>
 			</article>
 			<aside id="codeLine"><p>1</p></aside>
 		</article>
-		<article id="areaTablaSimbolos">
-				<fieldset>
-					<legend>Tabla de Símbolos: </legend>
-					<textarea id="tablaSimbolos" placeholder="Tokens..."></textarea>
-						<div id="botones">
-							<input type="button" id="compilar-boton"  value="Compilar" />
-							<input type="button" id="tablaSimbolos-boton" value="Tabla de Símbolos" />		
-							<input type="button" id="borrar-boton" value="Borrar" />			
+		<article id="areaAnalisis">
+			<article id="areaAnalisisLexico">
+					<fieldset>
+						<legend>Análisis Léxico: </legend>
+						<textarea id="analisisLexico" disabled=true></textarea>
+							<div id="botones1">
+							    <input type="button" id="analisisLexico-boton" value="Análisis Léxico" />			
+							</div>
+							<div id="botones5">
+								<input type="button" id="resultado-boton"  value="Correr" />	
+								<input type="button" id="borrar-boton" value="Borrar" />	
+								<input type="button" id="ayuda-boton" value="Ayuda" />
+							</div>
+					</fieldset>
+			</article>
+			<article id="areaAnalisisSintactico">
+					<fieldset>
+						<legend>Análisis Sintáctico: </legend>
+						<textarea id="analisisSintactico" disabled=true></textarea>
+						<div id="botones2">
+								<input type="button" id="analisisSintactico-boton" value="Análisis Sintáctico" />					
 						</div>
-				</fieldset>
+					</fieldset>
+			</article>
+			<article id="areaAnalisisSemantico">
+					<fieldset>
+						<legend>Análisis Semántico: </legend>
+						<textarea id="analisisSemantico" disabled=true></textarea>
+						<div id="botones3">
+								<input type="button" id="analisisSemantico-boton" value="Análisis Semántico" />					
+						</div>
+					</fieldset>
+			</article>
+			<article id="areaTablaSimbolos">
+					<fieldset>
+						<legend>Tabla de Símbolos: </legend>
+						<textarea id="tablaSimbolos" disabled=true></textarea>
+						<div id="botones4">
+								<input type="button" id="tablaSimbolos-boton" value="Tabla de Símbolos" />					
+						</div>
+					</fieldset>
+			</article>
+	</article>
 	<!--
 		<article id="areaErrores"></article>
 		-->

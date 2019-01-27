@@ -25,12 +25,15 @@ header > main > figure > img {
 	height: 100px;
 }
 
-
+textarea {
+	resize: none;
+	overflow: scroll;
+}
 
 #areaCodigo {
 	position: relative;
 	float: left;
-	width: 49%;
+	width: 27%;
 }
 
 #areaCodigo > aside {
@@ -63,53 +66,102 @@ header > main > figure > img {
     line-height: 16px;
 }
 
-#areaTablaSimbolos > fieldset {
-	position: relative;
-	width: 355px;
-	height: 431px;
-	left: 20px;
-}
-
-#areaTablaSimbolos > fieldset > textarea {
-	width: 100%;
-	height: 410px;
-	font-size: 12px;
-	line-height: 16px;
-}
-
-textarea {
-	resize: none;
-	overflow: scroll;
-}
-
-#areaCodigo > #areaCompilacion > fieldset {
+#areaCodigo > #areaResultados > fieldset {
 	float: left;
 	width: 96.6%;
 	left: 20px;
 }
 
-
-#areaCodigo > #areaCompilacion > fieldset > textarea {
+#areaCodigo > #areaResultados > fieldset > textarea {
 	width: 100%;
 	height: 120px;
 	font-size: 12px;
 	line-height: 16px;
 }
 
-#botones {
-	margin-top: 80px;
+#areaAnalisis {
+	position: relative;
+	float: left;
+	width: 65%;
 }
 
- #botones > #compilar-boton {
+#areaAnalisis > #areaAnalisisLexico > fieldset {
+	position: absolute;
+	width: 24%;
+	height: 431px;
+	left: 20px;
+}
+
+#areaAnalisis > #areaAnalisisLexico > fieldset > textarea {
+	width: 100%;
+	height: 410px;
+	font-size: 12px;
+	line-height: 16px;
+}
+
+#areaAnalisis > #areaAnalisisSintactico > fieldset {
+	position: absolute;
+	margin-left: 28%;
+	width: 24%;
+	height: 431px;
+	left: 20px;
+}
+
+#areaAnalisis > #areaAnalisisSintactico > fieldset > textarea {
+	width: 100%;
+	height: 410px;
+	font-size: 12px;
+	line-height: 16px;
+}
+
+#areaAnalisis > #areaAnalisisSemantico > fieldset {
+	position: absolute;
+	margin-left: 56%;
+	width: 24%;
+	height: 431px;
+	left: 20px;
+}
+
+#areaAnalisis > #areaAnalisisSemantico > fieldset > textarea {
+	width: 100%;
+	height: 410px;
+	font-size: 12px;
+	line-height: 16px;
+}
+
+#areaAnalisis > #areaTablaSimbolos > fieldset {
+	position: absolute;
+	margin-left: 84%;
+	width: 24%;
+	height: 431px;
+	left: 20px;
+}
+
+#areaAnalisis > #areaTablaSimbolos > fieldset > textarea {
+	width: 100%;
+	height: 410px;
+	font-size: 12px;
+	line-height: 16px;
+}
+
+#botones1, #botones2, #botones3, #botones4 {
+	margin-top: 80px;
+	text-align: center;
+}
+
+#botones5 {
+	margin-top: 20px;
+}
+
+ #botones5 > #resultado-boton {
 	border-radius: 5px;
 	color: white;
 	background-color: rgb(0, 140, 186);
-	padding: 5px;
 	margin-left: 15px;
 	font-size: 20px;
 }
 
-#botones > #tablaSimbolos-boton {
+#botones1> #analisisLexico-boton {
 	border-radius: 5px;
 	color: white;
 	background-color: rgb(76, 175, 80);
@@ -118,17 +170,50 @@ textarea {
 	font-size: 20px;
 }
 
-#botones > #borrar-boton {
+#botones5 > #borrar-boton {
 	border-radius: 5px;
 	color: white;
 	background-color: rgb(86, 76, 175);
 	padding-left: 15px;
 	padding-right: 20px;
-	margin-top: 5px;
+	font-size: 20px;
+}
+
+#botones5 > #ayuda-boton {
+	border-radius: 5px;
+	color: white;
+	background-color: rgb(216, 14, 14);
+	padding-left: 15px;
+	padding-right: 20px;
+	font-size: 20px;
+}
+
+#botones2> #analisisSintactico-boton {
+	border-radius: 5px;
+	color: white;
+	background-color: rgb(76, 175, 80);
+	padding: 5px;
 	margin-left: 15px;
 	font-size: 20px;
 }
 
+#botones3> #analisisSemantico-boton {
+	border-radius: 5px;
+	color: white;
+	background-color: rgb(76, 175, 80);
+	padding: 5px;
+	margin-left: 15px;
+	font-size: 20px;
+}
+
+#botones4> #tablaSimbolos-boton {
+	border-radius: 5px;
+	color: white;
+	background-color: rgb(76, 175, 80);
+	padding: 5px;
+	margin-left: 15px;
+	font-size: 20px;
+}
 
 /*
 #areaCompilacion,#areaErrores {
@@ -142,10 +227,25 @@ textarea {
 }
 */
 
-@media screen and (min-width: 600px) and (max-width: 900px) {
-	#areaCodigo,#areaCompilacion {
+@media screen and (min-width: 400px) and (max-width: 800px) {
+	#areaCodigo, #areaAnalisis {
 		display: inline-block;
-		float: left;
+		width: 100%;
+		margin-bottom: 30px;
+	}
+}
+
+@media screen and (min-width: 400px) and (max-width: 600px) {
+	#areaAnalisis > #areaAnalisisSintactico > fieldset {
+		display: inline-block;
+		width: 100%;
+		margin-bottom: 30px;
+	}
+}
+
+@media screen and (min-width: 400px) and (max-width: 600px) {
+	#areaAnalisis > #areaAnalisisSemantico > fieldset {
+		display: inline-block;
 		width: 100%;
 		margin-bottom: 30px;
 	}
