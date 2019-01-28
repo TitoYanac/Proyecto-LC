@@ -38,6 +38,32 @@
 			});
 
 
+
+			//Desarrollo de eventos
+			function analisisLexico(){
+
+				var codigoArea_text = $('#codigo');
+
+				var codigoArea = codigoArea_text.val();
+
+				var er = new RegExp("VY|YV");
+
+				var eva_er =  er.test(codigoArea);
+
+				var htmlAnalisisLexico = '';
+
+			//	while(eva_er){
+					htmlAnalisisLexico += eva_er;
+
+				
+			//	}
+
+				$('#analisisLexico').html(htmlAnalisisLexico);
+			
+
+			}
+
+
 			function borrarCodigo(){
 
 				var codigoArea_text = $('#codigo');
