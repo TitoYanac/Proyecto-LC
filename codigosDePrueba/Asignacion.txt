@@ -1,12 +1,12 @@
 vacio VY()
 
- entero variable1, variable2,variable3
+ entero variable1, variable2, variable3; decimal variable4
 	
  variable1 := 5
  variable2 := 7
 
  variable3 := variable1 + variable2
 
- imprimir(variable3)
+ imprimir("Suma: "->variable3)
 
 YV

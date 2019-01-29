@@ -1,6 +1,6 @@
 vacio VY()
 
-  bolean variable1
+  boleano variable1
   variable1 := true
 
   sicumple (variable1) ->{
