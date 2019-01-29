@@ -1,10 +1,10 @@
-publico VY{
+vacio VY()
 
-  bolean variable1;
-  variable1 := true;
+  bolean variable1
+  variable1 := true
 
   sicumple (variable1) ->{
-      imprime(“hola mundo”);              
-  };
+      imprimir(“hola mundo”)                    
+  }
 
-YV}
+YV

@@ -14,7 +14,17 @@
 	
 			//controles de eventos
 			$('#resultado-boton').click(function(){
-				resultado();
+				
+			//	var texto=text.value;
+				/*for (var i = 0; i < texto.length; i++) {
+					console.log(texto[i]);
+				}*/
+			//	var tokens1=texto.split(" ");
+			//	var tokens2=texto.split(",");
+			//	for (var i = 0; i < tokens2.length; i++) {
+			//		console.log(tokens2[i]);
+				}				//resultado();
+				
 			});
 
 			$('#analisisLexico-boton').click(function(){
@@ -50,13 +60,19 @@
 
 				var eva_er =  er.test(codigoArea);
 
+
 				var htmlAnalisisLexico = '';
 
-			//	while(eva_er){
-					htmlAnalisisLexico += eva_er;
+				while(eva_er){
+					if(eva_er){
+						htmlAnalisisLexico += "VY: Palabra Reserveda";
+					}else{
+						htmlAnalisisLexico += "error";
+					}
+					
 
 				
-			//	}
+				}
 
 				$('#analisisLexico').html(htmlAnalisisLexico);
 			
@@ -75,6 +91,10 @@
 					codigoArea_text.focus();			
 				}else{
 					codigoArea_text.val('');
+					document.getElementById("codeLine").innerHTML='';
+					var pl=document.createElement('p');
+					pl.innerHTML =1;
+					document.getElementById("codeLine").appendChild(pl);
 				}
 			}
 

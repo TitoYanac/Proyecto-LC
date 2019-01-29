@@ -1,9 +1,9 @@
-publico VY{
+vacio VY()
 
-   entero _tamanio := 100;
+   entero _tamanio := 100
 
+  <-- esto es un comentario -->
    para(entero i:= 0, i:<_tamanio, i++)->{
-	
-        imprimir(i);
+        imprimir(i)
    }
-YV}
+YV
