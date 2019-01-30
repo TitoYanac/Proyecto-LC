@@ -1,4 +1,4 @@
-vacio VY()
+vacio VY(),
 
  entero variable1, variable2, variable3; decimal variable4
 	

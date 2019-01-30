@@ -1,101 +1,130 @@
 <!DOCTYPE html>
 <html>
+
 <head>
 	<meta charset="utf-8"> <!-- Define el tipo de caracteres que se usaran en el documento html -->
-	<meta name="keywords" content="lenguajes y compiladores, curso, proyecto, lenguaje de programacion, lc++"> <!-- palabras clave para posicionamiento en buscadores -->
-	<meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- redimensiona la vista de la pagina web para cada tipo de dispositivo -->
+	<meta name="keywords" content="lenguajes y compiladores, curso, proyecto, lenguaje de programacion, lc++">
+	<!-- palabras clave para posicionamiento en buscadores -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- redimensiona la vista de la pagina web para cada tipo de dispositivo -->
 	<title>Proyecto LC ++</title>
-	<script  type="text/javascript" src="js/jquery-3.3.1.min.js"  ></script>
+	<script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="css/reset.css">
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 
-	<script>
-		$(document).ready(function(){
-	
+	<script type="text/javascript">
+		//arreglo de palabras reservadas
+		var arrayPalabrasReservadas = ["vacio", "VY", "entero", "imprimir", "YV", "para", "mientras",
+			"cadena", "sicumple", "boleano", "sino", "decimal", "verdadero",
+			"falso", "retornar", "opcion", "caso", "ruptura", "invalido", "hacer"
+		];
+		//arreglo de simbolos especiales
+		var arraySimbolosEspeciales = ["/", "*", "+", "-", ":=", "^", ":<=", ":>=", ":<", ":>", ":!=", "++", ":==", "->"];
+
+
+		//arreglo de tokens de delimitadores
+		//var arrayPretokensDelimitadores;
+
+		$(document).ready(function () {
+
 			//controles de eventos
-			$('#resultado-boton').click(function(){
-				
-			//	var texto=text.value;
+			$('#resultado-boton').click(function () {
+
+				//	var texto=text.value;
 				/*for (var i = 0; i < texto.length; i++) {
 					console.log(texto[i]);
 				}*/
-			//	var tokens1=texto.split(" ");
-			//	var tokens2=texto.split(",");
-			//	for (var i = 0; i < tokens2.length; i++) {
-			//		console.log(tokens2[i]);
-			//	}				
+				//	var tokens1=texto.split(" ");
+				//	var tokens2=texto.split(",");
+				//	for (var i = 0; i < tokens2.length; i++) {
+				//		console.log(tokens2[i]);
+				//	}				
 
-			   resultado();
-				
+				resultado();
+
+
 			});
 
-			$('#analisisLexico-boton').click(function(){
+			$('#analisisLexico-boton').click(function () {
 				analisisLexico();
 			});
 
-			$('#analisisSintactico-boton').click(function(){
+			$('#analisisSintactico-boton').click(function () {
 				analisisSintactico();
 			});
 
-			$('#analisisSemantico-boton').click(function(){
+			$('#analisisSemantico-boton').click(function () {
 				analisisSemantico();
 			});
 
-			$('#tablaSimbolos-boton').click(function(){
+			$('#tablaSimbolos-boton').click(function () {
 				tablaSimbolos();
 			});
 
-			$('#borrar-boton').click(function(){
+			$('#borrar-boton').click(function () {
 				borrarCodigo();
 			});
 
 
 
+
 			//Desarrollo de eventos
-			function analisisLexico(){
+			//Botón de analisis Lexico
+			function analisisLexico() {
 
 				var codigoArea_text = $('#codigo');
-
 				var codigoArea = codigoArea_text.val();
-
-				var er = new RegExp("VY|YV");
-
-				var eva_er =  er.test(codigoArea);
 
 
 				var htmlAnalisisLexico = '';
+				//htmlAnalisisLexico += codigoArea;
 
-				while(eva_er){
-					if(eva_er){
-						htmlAnalisisLexico += "VY: Palabra Reserveda";
-					}else{
-						htmlAnalisisLexico += "error";
+				//	$('#analisisLexico').html(htmlAnalisisLexico);
+
+				var separador = "";
+				var arrayPreToken = codigoArea.split(separador);
+				var longitudArrayPreToken = arrayPreToken.length;
+				var arrayPreTokensDelimitadores = [];
+				var cont = 0;
+				for (var i = 0; i < longitudArrayPreToken; i++) {
+					if(arrayPreToken[i] == '(' || arrayPreToken[i] == ')' || arrayPreToken[i] == '{' ||
+					arrayPreToken[i] == '}' || arrayPreToken[i] == ';' || arrayPreToken[i] == '[' ||
+					arrayPreToken[i] == ']' || arrayPreToken[i] == ','){
+						arrayPreTokensDelimitadores[cont] = arrayPreToken[i];
+						
+						cont++;
 					}
 					
+					
 
-				
+				}
+			
+				for (var index = 0; index < arrayPreTokensDelimitadores.length; index++) {
+					
+					console.log(arrayPreTokensDelimitadores[index]);
+					
 				}
 
-				$('#analisisLexico').html(htmlAnalisisLexico);
-			
+				
+
+
 
 			}
 
-
-			function borrarCodigo(){
+			function borrarCodigo() {
 
 				var codigoArea_text = $('#codigo');
 
 				var codigoArea = codigoArea_text.val();
 
-				if(codigoArea == ''){
+				if (codigoArea == '') {
 					alert("No hay nada que borrar");
-					codigoArea_text.focus();			
-				}else{
+					codigoArea_text.focus();
+				} else {
 					codigoArea_text.val('');
-					document.getElementById("codeLine").innerHTML='';
-					var pl=document.createElement('p');
-					pl.innerHTML =1;
+					document.getElementById("codeLine").innerHTML = '';
+					var pl = document.createElement('p');
+					pl.innerHTML = 1;
 					document.getElementById("codeLine").appendChild(pl);
 				}
 			}
@@ -103,6 +132,7 @@
 		});
 	</script>
 </head>
+
 <body>
 	<header>
 		<main>
@@ -119,65 +149,68 @@
 					<legend>Escribe tu Código aquí: </legend>
 					<textarea id="codigo" placeholder="Ingrese el código..." name="comment" form="codeform"></textarea>
 				</fieldset>
-			</form>	
+			</form>
 			<article id="areaResultados">
 				<fieldset>
 					<legend>Resultados: </legend>
 					<textarea id="resultados" placeholder="Resultados..." name="comment" form="codeform" disabled=true></textarea>
 				</fieldset>
 			</article>
-			<aside id="codeLine"><p>1</p></aside>
+			<aside id="codeLine">
+				<p>1</p>
+			</aside>
 		</article>
 		<article id="areaAnalisis">
 			<article id="areaAnalisisLexico">
-					<fieldset>
-						<legend>Análisis Léxico: </legend>
-						<textarea id="analisisLexico" disabled=true></textarea>
-							<div id="botones1">
-							    <input type="button" id="analisisLexico-boton" value="Análisis Léxico" />			
-							</div>
-							<div id="botones5">
-								<input type="button" id="resultado-boton"  value="Correr" />	
-								<input type="button" id="borrar-boton" value="Borrar" />	
-								<input type="button" id="ayuda-boton" value="Ayuda" />
-							</div>
-					</fieldset>
+				<fieldset>
+					<legend>Análisis Léxico: </legend>
+					<textarea id="analisisLexico" disabled=true></textarea>
+					<div id="botones1">
+						<input type="button" id="analisisLexico-boton" value="Análisis Léxico" />
+					</div>
+					<div id="botones5">
+						<input type="button" id="resultado-boton" value="Correr" />
+						<input type="button" id="borrar-boton" value="Borrar" />
+						<input type="button" id="ayuda-boton" value="Ayuda" />
+					</div>
+				</fieldset>
 			</article>
 			<article id="areaAnalisisSintactico">
-					<fieldset>
-						<legend>Análisis Sintáctico: </legend>
-						<textarea id="analisisSintactico" disabled=true></textarea>
-						<div id="botones2">
-								<input type="button" id="analisisSintactico-boton" value="Análisis Sintáctico" />					
-						</div>
-					</fieldset>
+				<fieldset>
+					<legend>Análisis Sintáctico: </legend>
+					<textarea id="analisisSintactico" disabled=true></textarea>
+					<div id="botones2">
+						<input type="button" id="analisisSintactico-boton" value="Análisis Sintáctico" />
+					</div>
+				</fieldset>
 			</article>
 			<article id="areaAnalisisSemantico">
-					<fieldset>
-						<legend>Análisis Semántico: </legend>
-						<textarea id="analisisSemantico" disabled=true></textarea>
-						<div id="botones3">
-								<input type="button" id="analisisSemantico-boton" value="Análisis Semántico" />					
-						</div>
-					</fieldset>
+				<fieldset>
+					<legend>Análisis Semántico: </legend>
+					<textarea id="analisisSemantico" disabled=true></textarea>
+					<div id="botones3">
+						<input type="button" id="analisisSemantico-boton" value="Análisis Semántico" />
+					</div>
+				</fieldset>
 			</article>
 			<article id="areaTablaSimbolos">
-					<fieldset>
-						<legend>Tabla de Símbolos: </legend>
-						<textarea id="tablaSimbolos" disabled=true></textarea>
-						<div id="botones4">
-								<input type="button" id="tablaSimbolos-boton" value="Tabla de Símbolos" />					
-						</div>
-					</fieldset>
+				<fieldset>
+					<legend>Tabla de Símbolos: </legend>
+					<textarea id="tablaSimbolos" disabled=true></textarea>
+					<div id="botones4">
+						<input type="button" id="tablaSimbolos-boton" value="Tabla de Símbolos" />
+					</div>
+				</fieldset>
 			</article>
-	</article>
-	<!--
+		</article>
+		<!--
 		<article id="areaErrores"></article>
 		-->
 	</section>
 	<footer>
 		<!-- JavaScript -->
-	    <script type="text/javascript" src="js/lcjs.js"></script>
+		<script type="text/javascript" src="js/lcjs.js"></script>
 	</footer>
-  </body>
+</body>
+
 </html>

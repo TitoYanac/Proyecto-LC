@@ -4,8 +4,8 @@ vacio VY()
   variable1 := 5
 
   sicumple (5 >: 4) ->{
-      imprimir(“mayor que 4”)             
+      imprimir("mayor que 4")             
   }sino{
-      imprimir(“menor que 4”) 
+      imprimir("menor que 4") 
   }
 YV
