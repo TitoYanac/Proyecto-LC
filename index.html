@@ -74,9 +74,9 @@
 
 				var codigoArea_text = $('#codigo');
 				var codigoArea = codigoArea_text.val();
-
-
 				var htmlAnalisisLexico = '';
+
+
 				//htmlAnalisisLexico += codigoArea;
 
 				//	$('#analisisLexico').html(htmlAnalisisLexico);
@@ -89,27 +89,47 @@
 				for (var i = 0; i < longitudArrayPreToken; i++) {
 					if(arrayPreToken[i] == '(' || arrayPreToken[i] == ')' || arrayPreToken[i] == '{' ||
 					arrayPreToken[i] == '}' || arrayPreToken[i] == ';' || arrayPreToken[i] == '[' ||
-					arrayPreToken[i] == ']' || arrayPreToken[i] == ','){
+					arrayPreToken[i] == ']' || arrayPreToken[i] == ',' || arrayPreToken[i] == '.'){
 						arrayPreTokensDelimitadores[cont] = arrayPreToken[i];
 						
 						cont++;
-					}
-					
-					
-
+						alert(i);
+						arrayPreToken.splice(i,1);
+					}	
 				}
-			
+
+				console.log(arrayPreToken);
+
+					htmlAnalisisLexico += '<table>';
+					htmlAnalisisLexico += '<tr>'
+				    htmlAnalisisLexico += '<th>Tokens</th>'
+					htmlAnalisisLexico += '<th>Cantidad</th>'
+					htmlAnalisisLexico += '<th>Nombre</th>'
+					htmlAnalisisLexico += '</tr>'
+
 				for (var index = 0; index < arrayPreTokensDelimitadores.length; index++) {
-					
-					console.log(arrayPreTokensDelimitadores[index]);
+				//	console.log(arrayPreTokensDelimitadores[index]);
+
+					htmlAnalisisLexico += '<tr>';
+					htmlAnalisisLexico += '<td>'+arrayPreTokensDelimitadores[index]+'</td>';
+					htmlAnalisisLexico += '<td>1</td>';
+					htmlAnalisisLexico += '<td>Delimitador</td>';
+					htmlAnalisisLexico += '</tr>';
+					//htmlAnalisisLexico += arrayPreTokensDelimitadores[index];
 					
 				}
 
-				
+				$('#analisisLexico').html(htmlAnalisisLexico);
 
-
+				htmlAnalisisLexico += '</table>';
 
 			}
+
+
+
+
+
+
 
 			function borrarCodigo() {
 
@@ -164,7 +184,7 @@
 			<article id="areaAnalisisLexico">
 				<fieldset>
 					<legend>Análisis Léxico: </legend>
-					<textarea id="analisisLexico" disabled=true></textarea>
+					<div id="analisisLexico"></div>
 					<div id="botones1">
 						<input type="button" id="analisisLexico-boton" value="Análisis Léxico" />
 					</div>
