@@ -3,7 +3,7 @@ vacio VY()
   boleano variable1
   variable1 := verdadero
 
-  sicumple (variable1) ->{
+  sicumple (variable1){
       imprimir("hola mundo")                    
   }
 

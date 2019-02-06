@@ -69,54 +69,84 @@
 
 
 			//Desarrollo de eventos
-			//Botón de analisis Lexico
+			//Analisis Lexico
 			function analisisLexico() {
 
 				var codigoArea_text = $('#codigo');
 				var codigoArea = codigoArea_text.val();
 				var htmlAnalisisLexico = '';
 
-
-				//htmlAnalisisLexico += codigoArea;
-
-				//	$('#analisisLexico').html(htmlAnalisisLexico);
-
 				var separador = "";
 				var arrayPreToken = codigoArea.split(separador);
 				var longitudArrayPreToken = arrayPreToken.length;
 				var arrayPreTokensDelimitadores = [];
 				var cont = 0;
+				//delimitadores
 				for (var i = 0; i < longitudArrayPreToken; i++) {
-					if(arrayPreToken[i] == '(' || arrayPreToken[i] == ')' || arrayPreToken[i] == '{' ||
-					arrayPreToken[i] == '}' || arrayPreToken[i] == ';' || arrayPreToken[i] == '[' ||
-					arrayPreToken[i] == ']' || arrayPreToken[i] == ',' || arrayPreToken[i] == '.'){
+					if (arrayPreToken[i] == '(' || arrayPreToken[i] == ')' || arrayPreToken[i] == '{' ||
+						arrayPreToken[i] == '}' || arrayPreToken[i] == ';' || arrayPreToken[i] == '[' ||
+						arrayPreToken[i] == ']' || arrayPreToken[i] == ',' || arrayPreToken[i] == '.') {
 						arrayPreTokensDelimitadores[cont] = arrayPreToken[i];
-						
+
 						cont++;
-						alert(i);
-						arrayPreToken.splice(i,1);
-					}	
+					}
 				}
 
-				console.log(arrayPreToken);
+				var expresionRegLetras = /[A-Za-z]/;
+				var expresionRegNum = /[0-9]/;
+				var estado = 0;
+				var j = 0;
+				var n = 0;
+				var cambio = true;
+				var arrayPreTokensIdentificadores1 = [];
+				var arrayPreTokensIdentificadores2 = [];
+				var cont2 = 0;
+				//identificador
+				while (arrayPreToken[cont2] != null) {
+				switch (estado) {
+						case 0:
+							if (expresionRegLetras.test(arrayPreToken[cont2]) || arrayPreToken[cont2] == '_') {
+								arrayPreTokensIdentificadores1[j] = arrayPreToken[cont2];
+								estado = 1;
+							} else {
+								estado = 0;
+							}
+							j++;
+							break;
+						case 1:
+							if (expresionRegLetras.test(arrayPreToken[cont2]) || arrayPreToken[cont2] == '_' || expresionRegNum.test(arrayPreToken[cont2])) {
+								arrayPreTokensIdentificadores1[j] = arrayPreToken[cont2];
+								estado = 1;
+							} else {
+								estado = 2;
+							}
+							j++;
+						case 2:
+							for (var i = 0; i < arrayPreTokensIdentificadores1.length; i++) {
+								arrayPreTokensIdentificadores2[n] = arrayPreTokensIdentificadores1[i];
 
-					htmlAnalisisLexico += '<table>';
-					htmlAnalisisLexico += '<tr>'
-				    htmlAnalisisLexico += '<th>Tokens</th>'
-					htmlAnalisisLexico += '<th>Cantidad</th>'
-					htmlAnalisisLexico += '<th>Nombre</th>'
-					htmlAnalisisLexico += '</tr>'
+							}
+							n++;
+							break;
+					} 
+
+					cont2++;
+				}
+				alert(arrayPreTokensIdentificadores1);
+
+				htmlAnalisisLexico += '<table>';
+				htmlAnalisisLexico += '<tr>'
+				htmlAnalisisLexico += '<th>Tokens</th>'
+				htmlAnalisisLexico += '<th>Categoría</th>'
+				htmlAnalisisLexico += '</tr>'
 
 				for (var index = 0; index < arrayPreTokensDelimitadores.length; index++) {
-				//	console.log(arrayPreTokensDelimitadores[index]);
 
 					htmlAnalisisLexico += '<tr>';
-					htmlAnalisisLexico += '<td>'+arrayPreTokensDelimitadores[index]+'</td>';
-					htmlAnalisisLexico += '<td>1</td>';
+					htmlAnalisisLexico += '<td>' + arrayPreTokensDelimitadores[index] + '</td>';
 					htmlAnalisisLexico += '<td>Delimitador</td>';
 					htmlAnalisisLexico += '</tr>';
-					//htmlAnalisisLexico += arrayPreTokensDelimitadores[index];
-					
+
 				}
 
 				$('#analisisLexico').html(htmlAnalisisLexico);

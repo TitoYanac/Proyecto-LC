@@ -7,6 +7,6 @@ vacio VY()
 
  variable3 := variable1 + variable2
 
- imprimir("Suma: "->variable3)
+ imprimir("Suma: "variable3)
 
 YV

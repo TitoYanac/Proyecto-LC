@@ -4,7 +4,7 @@ vacio VY()
    cadena mensaje := "hola"
    entero var := 0
 
-   mientras(_tamanio >: var)->{
+   mientras(_tamanio >: var){
       imprimir(mensaje)
       var++
    }	
