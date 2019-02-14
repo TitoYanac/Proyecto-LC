@@ -1,5 +1,6 @@
 body{ 
 	background-color: #ececec;
+	/*font-family: sans-serif;*/
 }
 
 body > section {
@@ -33,7 +34,7 @@ textarea {
 #areaCodigo {
 	position: relative;
 	float: left;
-	width: 27%;
+	width: 50%;
 }
 
 #areaCodigo > aside {
@@ -54,11 +55,10 @@ textarea {
     line-height: 16px;
 }
 
-#areaCodigo > #codeform > fieldset {
-	padding-right: 48px;
+#areaCodigo > form > fieldset {
 }
 
-#areaCodigo > #codeform  > fieldset > textarea {
+#areaCodigo > form  > fieldset > textarea {
 	width: 100%;
 	height: 410px;
 	padding-left: 30px;
@@ -66,9 +66,12 @@ textarea {
     line-height: 16px;
 }
 
+#areaResultados{
+	width: 100% !important;
+}
 #areaCodigo > #areaResultados > fieldset {
 	float: left;
-	width: 96.6%;
+	width: 100%;
 	left: 20px;
 }
 
@@ -79,91 +82,47 @@ textarea {
 	line-height: 16px;
 }
 
-#areaAnalisis {
-	position: relative;
+#areaAnalisis ,#areaAnalisis > article > article{
+	display: inline-block;
 	float: left;
-	width: 65%;
+	width: 50%;
+	height: 447px;
+	padding: 0 10px;
 }
 
-#areaAnalisis > #areaAnalisisLexico > fieldset {
-	position: absolute;
-	width: 24%;
-	height: 431px;
-	left: 20px;
-}
 
-#areaAnalisis > #areaAnalisisLexico > fieldset > textarea {
+#areaAnalisis > article > article > fieldset {
 	width: 100%;
-	height: 410px;
+	height: 100%;
+	padding: 6px 10px 28px 10px;
+}
+
+#areaAnalisis > article > article > fieldset > textarea {
+	width: 100%;
+	height: 100%;
 	font-size: 12px;
 	line-height: 16px;
 }
 
-#areaAnalisis > #areaAnalisisSintactico > fieldset {
-	position: absolute;
-	margin-left: 28%;
-	width: 24%;
-	height: 431px;
-	left: 20px;
-}
-
-#areaAnalisis > #areaAnalisisSintactico > fieldset > textarea {
-	width: 100%;
-	height: 410px;
-	font-size: 12px;
-	line-height: 16px;
-}
-
-#areaAnalisis > #areaAnalisisSemantico > fieldset {
-	position: absolute;
-	margin-left: 56%;
-	width: 24%;
-	height: 431px;
-	left: 20px;
-}
-
-#areaAnalisis > #areaAnalisisSemantico > fieldset > textarea {
-	width: 100%;
-	height: 410px;
-	font-size: 12px;
-	line-height: 16px;
-}
-
-#areaAnalisis > #areaTablaSimbolos > fieldset {
-	position: absolute;
-	margin-left: 84%;
-	width: 24%;
-	height: 431px;
-	left: 20px;
-}
-
-#areaAnalisis > #areaTablaSimbolos > fieldset > textarea {
-	width: 100%;
-	height: 410px;
-	font-size: 12px;
-	line-height: 16px;
-}
 
 #botones1 {
-	margin-top: 500px;
-	text-align: center;
 }
 
 #botones2, #botones3, #botones4 {
-	margin-top: 80px;
-	text-align: center;
 }
 
-#botones5 {
-	margin-top: 20px;
+#botones5 >input{
+	margin-right: 20px;
 }
 
  #botones5 > #resultado-boton {
 	border-radius: 5px;
 	color: white;
 	background-color: rgb(0, 140, 186);
-	margin-left: 15px;
 	font-size: 20px;
+	display: inline-block;
+	float: left;
+	margin-left: 10px;
 }
 
 #botones1> #analisisLexico-boton {
@@ -171,8 +130,10 @@ textarea {
 	color: white;
 	background-color: rgb(76, 175, 80);
 	padding: 5px;
-	margin-left: 15px;
 	font-size: 20px;
+	display: inline-block;
+	float: left;
+	margin-left: 10px;
 }
 
 #botones5 > #borrar-boton {
@@ -188,7 +149,6 @@ textarea {
 	border-radius: 5px;
 	color: white;
 	background-color: rgb(216, 14, 14);
-	margin-left: 14px;
 	padding-left: 5px;
 	padding-right: 20px;
 	font-size: 20px;
@@ -199,8 +159,10 @@ textarea {
 	color: white;
 	background-color: rgb(76, 175, 80);
 	padding: 5px;
-	margin-left: 15px;
 	font-size: 20px;
+	display: inline-block;
+	float: left;
+	margin-left: 10px;
 }
 
 #botones3> #analisisSemantico-boton {
@@ -208,8 +170,10 @@ textarea {
 	color: white;
 	background-color: rgb(76, 175, 80);
 	padding: 5px;
-	margin-left: 15px;
 	font-size: 20px;
+	display: inline-block;
+	float: left;
+	margin-left: 10px;
 }
 
 #botones4> #tablaSimbolos-boton {
@@ -217,8 +181,116 @@ textarea {
 	color: white;
 	background-color: rgb(76, 175, 80);
 	padding: 5px;
-	margin-left: 15px;
 	font-size: 20px;
+}
+
+footer{
+}
+#menuContainer {
+	position: fixed;
+	bottom: 0px;
+	right:0px;
+	width: 400px;
+	height: 170px;
+}
+#menuContainer > #relativo {
+	display: inline-block;
+	position: relative;
+	width: 100%;
+	height: 100%;
+}
+#menuContainer > #relativo > div{
+	position: absolute;
+	bottom: 0px;
+	right:0px;	
+}
+#menuContainer > #relativo > .oPmenu{
+	display: none;
+	background-color: rgba(0,0,0,0.8);
+	opacity: 0;
+	width: 175px;
+	height: 65px;
+	font-family: sans-serif;
+	font-size: 14px;
+	color: #ececec;
+	text-align: center;
+	border-radius: 50%;
+	cursor: pointer;
+	-moz-box-shadow: -5px -5px 5px rgba(68,68,68,0.6);
+	-webkit-box-shadow: -5px -5px 5px rgba(68,68,68,0.6);
+	box-shadow: -5px -5px 5px rgba(68,68,68,0.6);
+	-webkit-transition: ease-in-out 0.1s; /* For Safari 3.1 to 6.0 */
+  	transition: ease-in-out 0.1s;
+}
+#menuContainer > #relativo > .oPmenu:hover{
+	-moz-box-shadow: -5px -5px 25px rgba(68,68,68,0.6);
+	-webkit-box-shadow: -5px -5px 25px rgba(68,68,68,0.6);
+	box-shadow: -5px -5px 25px rgba(68,68,68,0.6);
+	scale
+}
+#menuContainer  > #relativo > #overMenu{
+	z-index: 10;
+	height: 75px;
+	width: 180px;
+	padding: 14px;
+	overflow: hidden;
+}
+#menuContainer  > #relativo > #overMenu > #menu {
+	display: inline-block;
+	width: 335px;
+    height: 150px;
+	border-radius: 50%;
+	background-color: rgba(0,0,0,0.8);
+	cursor: pointer;
+	-moz-box-shadow: -5px -5px 5px rgba(68,68,68,0.6);
+	-webkit-box-shadow: -5px -5px 5px rgba(68,68,68,0.6);
+	box-shadow: -5px -5px 5px rgba(68,68,68,0.6);
+	-webkit-transition: ease-in-out 0.1s; /* For Safari 3.1 to 6.0 */
+  	transition: ease-in-out 0.1s;
+}
+#menuContainer  > #relativo > #overMenu > #menu:hover {
+	-moz-box-shadow: -5px -5px 25px rgba(68,68,68,0.6);
+	-webkit-box-shadow: -5px -5px 25px rgba(68,68,68,0.6);
+	box-shadow: -5px -5px 25px rgba(68,68,68,0.6);
+}
+
+#menuContainer  > #relativo > #overMenu > #menu > p{
+	margin: 25px 0 0 92px;
+    font-size: 24px;
+    font-weight: bold;
+    color: #ececce;
+    -webkit-transition: ease-in-out 0.1s; /* For Safari 3.1 to 6.0 */
+  	transition: ease-in-out 0.1s;
+    
+}
+#menuContainer  > #relativo > #overMenu > #menu:hover > p {
+	font-size: 40px;
+    margin: 18px 0 0 85px;
+}
+#menuContainer > #relativo > #t1{
+	z-index: 9;
+	top: 0; 
+	right: 1px;
+	padding: 15px;
+	line-height: 17px;
+}
+#menuContainer > #relativo > #t2{
+	z-index: 8;
+	top: 41px;
+	left: 72px; 
+	padding: 15px;
+	line-height: 34px;
+}
+#menuContainer > #relativo > #t3{
+	z-index: 7;
+	top: 104px; 
+	left: 0;
+	padding: 15px;
+	line-height: 17px;
+}
+
+#slide1, #slide3{
+	display: none;
 }
 
 /*
@@ -233,26 +305,19 @@ textarea {
 }
 */
 
-@media screen and (min-width: 400px) and (max-width: 800px) {
+@media screen and (min-width: 400px) and (max-width: 600px) {
 	#areaCodigo, #areaAnalisis {
-		display: inline-block;
 		width: 100%;
-		margin-bottom: 30px;
 	}
 }
-
-@media screen and (min-width: 400px) and (max-width: 600px) {
-	#areaAnalisis > #areaAnalisisSintactico > fieldset {
-		display: inline-block;
-		width: 100%;
-		margin-bottom: 30px;
+@media screen and (min-width: 600px) and (max-width: 930px) {
+	#areaCodigo {
+		width: 60%;
 	}
-}
-
-@media screen and (min-width: 400px) and (max-width: 600px) {
-	#areaAnalisis > #areaAnalisisSemantico > fieldset {
-		display: inline-block;
+	#areaAnalisis {
+		width: 40%;
+	}
+	#areaAnalisis > article > article{
 		width: 100%;
-		margin-bottom: 30px;
 	}
 }
