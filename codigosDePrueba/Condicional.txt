@@ -1,9 +1,9 @@
 vacio VY()
 
-  boleano variable1
-  variable1 := verdadero
+  boleano _variable1
+  variable1 = _verdadero
 
-  sicumple (variable1){
+  sicumple (_variable1){
       imprimir("hola mundo")                    
   }
 

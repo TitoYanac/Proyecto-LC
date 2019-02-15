@@ -3,7 +3,7 @@ vacio VY()
    entero _tamanio := 100
 
   <-- esto es un comentario -->
-   para(entero i:= 0, i:<_tamanio, i++){
-        imprimir(i)
+   para(entero _var = 0, _var <_tamanio, _var++){
+        imprimir(_var)
    }
 YV

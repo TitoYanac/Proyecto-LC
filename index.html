@@ -71,68 +71,167 @@
 			//Desarrollo de eventos
 			//Analisis Lexico
 			function analisisLexico() {
-
+				
 				var codigoArea_text = $('#codigo');
 				var codigoArea = codigoArea_text.val();
 				var htmlAnalisisLexico = '';
 
-				var separador = "";
+				//delimitadores
+				var separador = "";//para separar en caracteres, incluidos espacios en blanco
+				var separador1 = /\s/;//para detectar un espacio en blanco en el codigo ingresado
 				var arrayPreToken = codigoArea.split(separador);
+				var arrayPreToken1 = codigoArea.split(separador1);
 				var longitudArrayPreToken = arrayPreToken.length;
+				var longitudArrayPreToken1 = arrayPreToken1.length;
 				var arrayPreTokensDelimitadores = [];
 				var cont = 0;
-				//delimitadores
 				for (var i = 0; i < longitudArrayPreToken; i++) {
 					if (arrayPreToken[i] == '(' || arrayPreToken[i] == ')' || arrayPreToken[i] == '{' ||
 						arrayPreToken[i] == '}' || arrayPreToken[i] == ';' || arrayPreToken[i] == '[' ||
-						arrayPreToken[i] == ']' || arrayPreToken[i] == ',' || arrayPreToken[i] == '.') {
+						arrayPreToken[i] == ']' || arrayPreToken[i] == ',' || arrayPreToken[i] == '.' ||
+						arrayPreToken[i] == ':' || arrayPreToken[i] == '"' ) {
 						arrayPreTokensDelimitadores[cont] = arrayPreToken[i];
 
 						cont++;
 					}
 				}
+				
+				//palabras reservadas
+				var arrayErrorTokens = [];
+				var arrayPreTokensIdentificadores = [];
+				var contI = 0;
+				var arrayPreTokensPalabrasReservadas = [];
+				var array
+				var cont1 = 0;
+				//var exVy = /[0-9]VY[a-zA-Z]|[a-zA-Z]VY[0-9]|[0-9]VY[0-9]|[a-zA-Z]VY[a-zA-Z]|[0-9]VY|[A-Za-z]VY|VY[a-zA-Z]|VY[0-9]/;
+				var exVy = /.VY(?!\().|.VY|VY(?!\()./;
+				var exVy1 = /VY/;
+				//var exYv = /[0-9]YV[a-zA-Z]|[a-zA-Z]YV[0-9]|[0-9]YV[0-9]|[a-zA-Z]YV[a-zA-Z]|[0-9]YV|[A-Za-z]YV|YV[a-zA-Z]|YV[0-9]/;
+				var exYv = /.YV.|.YV|YV./;
+				var exYv1 = /YV/;
+				var exEntero = /.entero.|.entero|entero./;
+				var exEntero1 = /entero/;
+				var exDecimal = /.decimal.|.decimal|decimal./;
+				var exDecimal1 = /decimal/;
+				var exCadena = /.cadena.|.cadena|cadena./;
+				var exCadena1 = /cadena/;
+				var exPara = /.para(?!\().|.para|para(?!\()./;
+				var exPara1 = /para/;
+				var exMientras = /.mientras(?!\().|.mientras|mientras(?!\()./;
+				var exMientras1 = /mientras/;
+				var exSicumple = /.sicumple(?!\().|.sicumple|sicumple(?!\()./;
+				var exSicumple1 = /sicumple/;
+				
+				/*	var exSino1 = /.sino(?!\{).|.sino|sino(?!\{)./;
+					var exSino = /sino/;
+					var exVerdadero = /verdadero/;
+					var exFalso = /falso/;
+					var exRetornar = /retornar/;
+					var exOpcion = /opcion/;
+					var exCaso = /caso/;
+					var exRuptura = /ruptura/;
+					var exInvalido = /invalido/;
+					var exVacio = /vacio/;
+					var exImprimir = /imprimir/;
+					var exBoleano = /boleano/;*/
+				var exImprimir = /.imprimir(?!\().|.imprimir|imprimir(?!\()./;
+				var exImprimir1 = /imprimir/
+				for (var i = 0; i < longitudArrayPreToken1; i++) {
+					if (exVy.test(arrayPreToken1[i])) {
+						arrayPreTokensIdentificadores[contI] = arrayPreToken1[i].match(exVy);
+						contI++;
+					} else if (exVy1.test(arrayPreToken1[i])) {
+						arrayPreTokensPalabrasReservadas[cont1] = arrayPreToken1[i].match(exVy1);
+						cont1++;
+					}
+					if (exYv.test(arrayPreToken1[i])) {
+						arrayPreTokensIdentificadores[contI] = arrayPreToken1[i].match(exYv);
+						contI++;
+					} else if (exYv1.test(arrayPreToken1[i])) {
+						arrayPreTokensPalabrasReservadas[cont1] = arrayPreToken1[i].match(exYv1);
+						cont1++;
+					}
+					if (exEntero.test(arrayPreToken1[i])) {
+						arrayPreTokensIdentificadores[contI] = arrayPreToken1[i].match(exEntero);
+						contI++;
+					} else if (exEntero1.test(arrayPreToken1[i])) {
+						arrayPreTokensPalabrasReservadas[cont1] = arrayPreToken1[i].match(exEntero1);
+						cont1++;
+					}
+					if (exDecimal.test(arrayPreToken1[i])) {
+						arrayPreTokensIdentificadores[contI] = arrayPreToken1[i].match(exDecimal);
+						contI++;
+					} else if (exDecimal1.test(arrayPreToken1[i])) {
+						arrayPreTokensPalabrasReservadas[cont1] = arrayPreToken1[i].match(exDecimal1);
+						cont1++;
+					}
+					if (exCadena.test(arrayPreToken1[i])) {
+						arrayPreTokensIdentificadores[contI] = arrayPreToken1[i].match(exCadena);
+						contI++;
+					} else if (exCadena1.test(arrayPreToken1[i])) {
+						arrayPreTokensPalabrasReservadas[cont1] = arrayPreToken1[i].match(exCadena1);
+						cont1++;
+					}
+					if (exPara.test(arrayPreToken1[i])) {
+						arrayPreTokensIdentificadores[contI] = arrayPreToken1[i].match(exPara);
+						contI++;
+					} else if (exPara1.test(arrayPreToken1[i])) {
+						arrayPreTokensPalabrasReservadas[cont1] = arrayPreToken1[i].match(exPara1);
+						cont1++;
+					}
+					if (exMientras.test(arrayPreToken1[i])) {
+						arrayPreTokensIdentificadores[contI] = arrayPreToken1[i].match(exMientras);
+						contI++;
+					} else if (exMientras1.test(arrayPreToken1[i])) {
+						arrayPreTokensPalabrasReservadas[cont1] = arrayPreToken1[i].match(exMientras1);
+						cont1++;
+					}
+					if (exSicumple.test(arrayPreToken1[i])) {
+						arrayPreTokensIdentificadores[contI] = arrayPreToken1[i].match(exSicumple);
+						contI++;
+					} else if (exSicumple1.test(arrayPreToken1[i])) {
+						arrayPreTokensPalabrasReservadas[cont1] = arrayPreToken1[i].match(exSicumple1);
+						cont1++;
+					}
+					if (exImprimir.test(arrayPreToken1[i])) {
+						arrayPreTokensIdentificadores[contI] = arrayPreToken1[i].match(exImprimir);
+						contI++;
+					} else if (exImprimir1.test(arrayPreToken1[i])) {
+						arrayPreTokensPalabrasReservadas[cont1] = arrayPreToken1[i].match(exImprimir1);
+						cont1++;
+					}
 
-				var expresionRegLetras = /[A-Za-z]/;
-				var expresionRegNum = /[0-9]/;
-				var estado = 0;
-				var j = 0;
-				var n = 0;
-				var cambio = true;
-				var arrayPreTokensIdentificadores1 = [];
-				var arrayPreTokensIdentificadores2 = [];
-				var cont2 = 0;
-				//identificador
-				while (arrayPreToken[cont2] != null) {
-				switch (estado) {
-						case 0:
-							if (expresionRegLetras.test(arrayPreToken[cont2]) || arrayPreToken[cont2] == '_') {
-								arrayPreTokensIdentificadores1[j] = arrayPreToken[cont2];
-								estado = 1;
-							} else {
-								estado = 0;
-							}
-							j++;
-							break;
-						case 1:
-							if (expresionRegLetras.test(arrayPreToken[cont2]) || arrayPreToken[cont2] == '_' || expresionRegNum.test(arrayPreToken[cont2])) {
-								arrayPreTokensIdentificadores1[j] = arrayPreToken[cont2];
-								estado = 1;
-							} else {
-								estado = 2;
-							}
-							j++;
-						case 2:
-							for (var i = 0; i < arrayPreTokensIdentificadores1.length; i++) {
-								arrayPreTokensIdentificadores2[n] = arrayPreTokensIdentificadores1[i];
 
-							}
-							n++;
-							break;
-					} 
-
-					cont2++;
 				}
-				alert(arrayPreTokensIdentificadores1);
+				
+				//identificadores
+				var exIdentificador = /_+[a-zA-Z]*[0-9]*[a-zA-Z]*|[a-zA-Z]+[0-9]*[a-zA-Z]*/;
+				var arrayPreTokensIdentificadores1 = [];
+				var arrayErrores = [];
+				var longitudArrayPreTokensIdentificadores = arrayPreTokensIdentificadores.length;
+				var cont2 = 0;
+				var contE = 0;
+				for (var i = 0; i < longitudArrayPreTokensIdentificadores; i++) {
+					if (exIdentificador.test(arrayPreTokensIdentificadores[i])) {
+						arrayPreTokensIdentificadores1[cont2] = arrayPreToken1[i].match(exIdentificador);
+						cont2++;
+					} else {
+						arrayErrores[contE] = arrayPreTokensIdentificadores[i];
+						contE++;
+					}
+				}
+
+				//operadores
+				var arrayPreTokensOperadores = [];
+				var cont2 = 0;
+				for (var i = 0; i < longitudArrayPreToken; i++) {
+					if (arrayPreToken[i] == '*' || arrayPreToken[i] == '/' || arrayPreToken[i] == '+' ||
+						arrayPreToken[i] == '-'
+					) {
+						arrayPreTokensOperadores[cont2] = arrayPreToken[i];
+						cont2++;
+					}
+				}
 
 				htmlAnalisisLexico += '<table>';
 				htmlAnalisisLexico += '<tr>'
@@ -148,11 +247,42 @@
 					htmlAnalisisLexico += '</tr>';
 
 				}
+				for (var index = 0; index < arrayPreTokensPalabrasReservadas.length; index++) {
+
+					htmlAnalisisLexico += '<tr>';
+					htmlAnalisisLexico += '<td>' + arrayPreTokensPalabrasReservadas[index] + '</td>';
+					htmlAnalisisLexico += '<td>Palabra Reservada</td>';
+					htmlAnalisisLexico += '</tr>';
+
+				}
+				for (var index = 0; index < arrayPreTokensIdentificadores1.length; index++) {
+
+					htmlAnalisisLexico += '<tr>';
+					htmlAnalisisLexico += '<td>' + arrayPreTokensIdentificadores1[index] + '</td>';
+					htmlAnalisisLexico += '<td>Identificador</td>';
+					htmlAnalisisLexico += '</tr>';
+
+				}
+				for (var index = 0; index < arrayPreTokensOperadores.length; index++) {
+
+					htmlAnalisisLexico += '<tr>';
+					htmlAnalisisLexico += '<td>' + arrayPreTokensOperadores[index] + '</td>';
+					htmlAnalisisLexico += '<td>Operadores</td>';
+					htmlAnalisisLexico += '</tr>';
+
+				}
+				for (var index = 0; index < arrayErrores.length; index++) {
+
+					htmlAnalisisLexico += '<tr>';
+					htmlAnalisisLexico += '<td>' + arrayErrores[index] + '</td>';
+					htmlAnalisisLexico += '<td>No identificado</td>';
+					htmlAnalisisLexico += '</tr>';
+
+				}
 
 				$('#analisisLexico').html(htmlAnalisisLexico);
 
 				htmlAnalisisLexico += '</table>';
-
 			}
 
 
