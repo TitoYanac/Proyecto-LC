@@ -26,48 +26,13 @@
 		//var arrayPretokensDelimitadores;
 
 		$(document).ready(function () {
-
 			//controles de eventos
-			$('#resultado-boton').click(function () {
-
-				//	var texto=text.value;
-				/*for (var i = 0; i < texto.length; i++) {
-					console.log(texto[i]);
-				}*/
-				//	var tokens1=texto.split(" ");
-				//	var tokens2=texto.split(",");
-				//	for (var i = 0; i < tokens2.length; i++) {
-				//		console.log(tokens2[i]);
-				//	}				
-
-				resultado();
-
-
-			});
-
-			$('#analisisLexico-boton').click(function () {
-				analisisLexico();
-			});
-
-			$('#analisisSintactico-boton').click(function () {
-				analisisSintactico();
-			});
-
-			$('#analisisSemantico-boton').click(function () {
-				analisisSemantico();
-			});
-
-			$('#tablaSimbolos-boton').click(function () {
-				tablaSimbolos();
-			});
-
-			$('#borrar-boton').click(function () {
-				borrarCodigo();
-			});
-
-
-
-
+			$('#resultado-boton').click(function () { resultado(); });
+			$('#analisisLexico-boton').click(function () { analisisLexico(); });
+			$('#analisisSintactico-boton').click(function () { analisisSintactico(); });
+			$('#analisisSemantico-boton').click(function () { analisisSemantico(); });
+			$('#tablaSimbolos-boton').click(function () { tablaSimbolos(); });
+			$('#borrar-boton').click(function () { borrarCodigo(); });
 			//Desarrollo de eventos
 			//Analisis Lexico
 			function analisisLexico() {
@@ -285,12 +250,6 @@
 				htmlAnalisisLexico += '</table>';
 			}
 
-
-
-
-
-
-
 			function borrarCodigo() {
 
 				var codigoArea_text = $('#codigo');
@@ -330,62 +289,82 @@
 					<textarea id="codigo" placeholder="Ingrese el código..." name="comment" form="codeform"></textarea>
 				</fieldset>
 			</form>
-			<article id="areaResultados">
-				<fieldset>
-					<legend>Resultados: </legend>
-					<textarea id="resultados" placeholder="Resultados..." name="comment" form="codeform" disabled=true></textarea>
-				</fieldset>
-			</article>
 			<aside id="codeLine">
 				<p>1</p>
 			</aside>
 		</article>
 		<article id="areaAnalisis">
-			<article id="areaAnalisisLexico">
-				<fieldset>
-					<legend>Análisis Léxico: </legend>
-					<div id="analisisLexico"></div>
-					<div id="botones1">
-						<input type="button" id="analisisLexico-boton" value="Análisis Léxico" />
-					</div>
-					<div id="botones5">
-						<input type="button" id="resultado-boton" value="Correr" />
-						<input type="button" id="borrar-boton" value="Borrar" />
-						<input type="button" id="ayuda-boton" value="Ayuda" />
-					</div>
-				</fieldset>
+			<article id="slide1">
+				<article id="areaAnalisisLexico">
+					<fieldset>
+						<legend>Análisis Léxico: </legend>
+						<div id="analisisLexico"></div>
+					</fieldset>
+				</article>
+				<article id="areaAnalisisSintactico">
+					<fieldset>
+						<legend>Análisis Sintáctico: </legend>
+						<textarea id="analisisSintactico" disabled=true></textarea>
+					</fieldset>
+				</article>
+				<div id="botones1">
+					<input type="button" id="analisisLexico-boton" value="Análisis Léxico" />
+				</div>
+				<div id="botones2">
+					<input type="button" id="analisisSintactico-boton" value="Análisis Sintáctico" />
+				</div>
 			</article>
-			<article id="areaAnalisisSintactico">
-				<fieldset>
-					<legend>Análisis Sintáctico: </legend>
-					<textarea id="analisisSintactico" disabled=true></textarea>
-					<div id="botones2">
-						<input type="button" id="analisisSintactico-boton" value="Análisis Sintáctico" />
-					</div>
-				</fieldset>
+			<article id="slide2">
+				<article id="areaResultados">
+					<fieldset>
+						<legend>Resultados: </legend>
+						<textarea id="resultados" placeholder="Resultados..." name="comment" form="codeform" disabled=true></textarea>
+					</fieldset>
+				</article>
 			</article>
-			<article id="areaAnalisisSemantico">
-				<fieldset>
-					<legend>Análisis Semántico: </legend>
-					<textarea id="analisisSemantico" disabled=true></textarea>
-					<div id="botones3">
-						<input type="button" id="analisisSemantico-boton" value="Análisis Semántico" />
-					</div>
-				</fieldset>
-			</article>
-			<article id="areaTablaSimbolos">
-				<fieldset>
-					<legend>Tabla de Símbolos: </legend>
-					<textarea id="tablaSimbolos" disabled=true></textarea>
-					<div id="botones4">
-						<input type="button" id="tablaSimbolos-boton" value="Tabla de Símbolos" />
-					</div>
-				</fieldset>
+			<article id="slide3">
+				<article id="areaAnalisisSemantico">
+					<fieldset>
+						<legend>Análisis Semántico: </legend>
+						<textarea id="analisisSemantico" disabled=true></textarea>
+					</fieldset>
+				</article>
+				<article id="areaTablaSimbolos">
+					<fieldset>
+						<legend>Tabla de Símbolos: </legend>
+						<textarea id="tablaSimbolos" disabled=true></textarea>
+					</fieldset>
+				</article>
+				<div id="botones3">
+					<input type="button" id="analisisSemantico-boton" value="Análisis Semántico" />
+				</div>	
+				<div id="botones4">
+					<input type="button" id="tablaSimbolos-boton" value="Tabla de Símbolos" />
+				</div>
 			</article>
 		</article>
 		<!--
 		<article id="areaErrores"></article>
 		-->
+	</section>
+
+	
+	<div id="botones5">
+		<input type="button" id="resultado-boton" value="Compilar" />
+		<input type="button" id="borrar-boton" value="Nuevo" />
+		<input type="button" id="ayuda-boton" value="Ayuda" />
+	</div>
+	<section id="menuContainer">
+		<div id="relativo">
+			<div id="overMenu">
+				<div id="menu">
+					<p>Ver</p>
+				</div>
+			</div>
+			<div class="oPmenu" id="t1"><p>Análisis Léxico<br>y Sintáctico</p></div>
+			<div class="oPmenu" id="t2"><p>Mostrar Resultado</p></div>
+			<div class="oPmenu" id="t3"><p>Análisis Semántico y<br>Tabla de Simbolos</p></div>
+		</div>
 	</section>
 	<footer>
 		<!-- JavaScript -->
