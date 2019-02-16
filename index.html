@@ -33,10 +33,41 @@
 			$('#analisisSemantico-boton').click(function () { analisisSemantico(); });
 			$('#tablaSimbolos-boton').click(function () { tablaSimbolos(); });
 			$('#borrar-boton').click(function () { borrarCodigo(); });
+			$('#asignacion-boton').click(function () {
+				fff();
+
+			});
+			function fff() {
+				var codigoArea_text = $('#codigo');
+
+				var codigoArea = codigoArea_text.val();
+				if(codigoArea == ''){
+				var tt = '';
+				tt += 'vacio VY()';
+				tt += '\n';
+				tt += 'entero _variable1, _variable2, _variable3; decimal _variable4';
+				tt += '\n';
+				tt += '_variable1 := 5';
+				tt += '\n';
+				tt += '_variable2 := 7';
+				tt += '\n';
+				tt += '_variable3 := _variable1 + _variable2';
+				tt += '\n';
+				tt += 'imprimir("Suma: "variable3)';
+				tt += '\n';
+				tt += 'YV';
+
+				$('#codigo').html(tt);
+			}else{
+				alert('ya esta lleno');
+			}
+				//var tx = $('#codigo').text($('#cod1').html());
+				//alert(tx);
+			}
 			//Desarrollo de eventos
 			//Analisis Lexico
 			function analisisLexico() {
-				
+
 				var codigoArea_text = $('#codigo');
 				var codigoArea = codigoArea_text.val();
 				var htmlAnalisisLexico = '';
@@ -54,13 +85,13 @@
 					if (arrayPreToken[i] == '(' || arrayPreToken[i] == ')' || arrayPreToken[i] == '{' ||
 						arrayPreToken[i] == '}' || arrayPreToken[i] == ';' || arrayPreToken[i] == '[' ||
 						arrayPreToken[i] == ']' || arrayPreToken[i] == ',' || arrayPreToken[i] == '.' ||
-						arrayPreToken[i] == ':' || arrayPreToken[i] == '"' ) {
+						arrayPreToken[i] == ':' || arrayPreToken[i] == '"') {
 						arrayPreTokensDelimitadores[cont] = arrayPreToken[i];
 
 						cont++;
 					}
 				}
-				
+
 				//palabras reservadas
 				var arrayErrorTokens = [];
 				var arrayPreTokensIdentificadores = [];
@@ -86,7 +117,7 @@
 				var exMientras1 = /mientras/;
 				var exSicumple = /.sicumple(?!\().|.sicumple|sicumple(?!\()./;
 				var exSicumple1 = /sicumple/;
-				
+
 				/*	var exSino1 = /.sino(?!\{).|.sino|sino(?!\{)./;
 					var exSino = /sino/;
 					var exVerdadero = /verdadero/;
@@ -168,7 +199,7 @@
 
 
 				}
-				
+
 				//identificadores
 				var exIdentificador = /_+[a-zA-Z]*[0-9]*[a-zA-Z]*|[a-zA-Z]+[0-9]*[a-zA-Z]*/;
 				var arrayPreTokensIdentificadores1 = [];
@@ -199,10 +230,10 @@
 				}
 
 				htmlAnalisisLexico += '<table>';
-				htmlAnalisisLexico += '<tr>'
-				htmlAnalisisLexico += '<th>Tokens</th>'
-				htmlAnalisisLexico += '<th>Categoría</th>'
-				htmlAnalisisLexico += '</tr>'
+				htmlAnalisisLexico += '<tr>';
+				htmlAnalisisLexico += '<th>Tokens</th>';
+				htmlAnalisisLexico += '<th>Categoría</th>';
+				htmlAnalisisLexico += '</tr>';
 
 				for (var index = 0; index < arrayPreTokensDelimitadores.length; index++) {
 
@@ -244,10 +275,9 @@
 					htmlAnalisisLexico += '</tr>';
 
 				}
+				htmlAnalisisLexico += '</table>';
 
 				$('#analisisLexico').html(htmlAnalisisLexico);
-
-				htmlAnalisisLexico += '</table>';
 			}
 
 			function borrarCodigo() {

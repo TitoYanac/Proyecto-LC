@@ -1,7 +1,7 @@
 vacio VY()
 
-  boleano _variable1
-  variable1 = _verdadero
+  boleano _variable1;
+  variable1 = _verdadero;
 
   sicumple (_variable1){
       imprimir("hola mundo")                    
