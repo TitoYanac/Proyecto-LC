@@ -1,10 +1,10 @@
 vacio VY()
 
   boleano _variable1;
-  variable1 = _verdadero;
+  variable1 = verdadero;
 
-  sicumple (_variable1){
-      imprimir("hola mundo")                    
+  sicumple ( _variable1 ) {
+      imprimir ( " hola mundo " )                    
   }
 
 YV

@@ -11,16 +11,22 @@
 	<script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="css/reset.css">
 	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<style>
+		table,
+		th,
+		td {
+			border: 1px solid green;
+			text-align: center;
+			background-color: wheat;
+			padding: 2px;
+		}
 
+		th {
+			text-align: center;
+			background-color: sienna;
+		}
+	</style>
 	<script type="text/javascript">
-		//arreglo de palabras reservadas
-		var arrayPalabrasReservadas = ["vacio", "VY", "entero", "imprimir", "YV", "para", "mientras",
-			"cadena", "sicumple", "boleano", "sino", "decimal", "verdadero",
-			"falso", "retornar", "opcion", "caso", "ruptura", "invalido", "hacer"
-		];
-		//arreglo de simbolos especiales
-		var arraySimbolosEspeciales = ["/", "*", "+", "-", ":=", "^", ":<=", ":>=", ":<", ":>", ":!=", "++", ":==", "->"];
-
 
 		//arreglo de tokens de delimitadores
 		//var arrayPretokensDelimitadores;
@@ -37,33 +43,7 @@
 				fff();
 
 			});
-			function fff() {
-				var codigoArea_text = $('#codigo');
 
-				var codigoArea = codigoArea_text.val();
-				if(codigoArea == ''){
-				var tt = '';
-				tt += 'vacio VY()';
-				tt += '\n';
-				tt += 'entero _variable1, _variable2, _variable3; decimal _variable4';
-				tt += '\n';
-				tt += '_variable1 := 5';
-				tt += '\n';
-				tt += '_variable2 := 7';
-				tt += '\n';
-				tt += '_variable3 := _variable1 + _variable2';
-				tt += '\n';
-				tt += 'imprimir("Suma: "variable3)';
-				tt += '\n';
-				tt += 'YV';
-
-				$('#codigo').html(tt);
-			}else{
-				alert('ya esta lleno');
-			}
-				//var tx = $('#codigo').text($('#cod1').html());
-				//alert(tx);
-			}
 			//Desarrollo de eventos
 			//Analisis Lexico
 			function analisisLexico() {
@@ -92,129 +72,162 @@
 					}
 				}
 
-				//palabras reservadas
-				var arrayErrorTokens = [];
+				//palabras reservadas, identificadores 
+				var arrayErrores = [];
+				var contE = 0;
 				var arrayPreTokensIdentificadores = [];
+				var arrayPreTokensNumeros = [];
 				var contI = 0;
 				var arrayPreTokensPalabrasReservadas = [];
 				var array
 				var cont1 = 0;
-				//var exVy = /[0-9]VY[a-zA-Z]|[a-zA-Z]VY[0-9]|[0-9]VY[0-9]|[a-zA-Z]VY[a-zA-Z]|[0-9]VY|[A-Za-z]VY|VY[a-zA-Z]|VY[0-9]/;
-				var exVy = /.VY(?!\().|.VY|VY(?!\()./;
+				var exVy = /.+VY(?!\().+|.+VY|VY(?!\().+/;
 				var exVy1 = /VY/;
-				//var exYv = /[0-9]YV[a-zA-Z]|[a-zA-Z]YV[0-9]|[0-9]YV[0-9]|[a-zA-Z]YV[a-zA-Z]|[0-9]YV|[A-Za-z]YV|YV[a-zA-Z]|YV[0-9]/;
-				var exYv = /.YV.|.YV|YV./;
+				var exYv = /.+YV.+|.+YV|YV.+/;
 				var exYv1 = /YV/;
-				var exEntero = /.entero.|.entero|entero./;
+				var exEntero = /.+(?!\()entero.+|.+entero|entero.+/;
 				var exEntero1 = /entero/;
-				var exDecimal = /.decimal.|.decimal|decimal./;
+				var exDecimal = /.+decimal.+|.+decimal|decimal.+/;
 				var exDecimal1 = /decimal/;
-				var exCadena = /.cadena.|.cadena|cadena./;
+				var exCadena = /.+cadena.+|.+cadena|cadena.+/;
 				var exCadena1 = /cadena/;
-				var exPara = /.para(?!\().|.para|para(?!\()./;
+				var exPara = /.+para(?!\().+|.+para|para(?!\().+/;
 				var exPara1 = /para/;
-				var exMientras = /.mientras(?!\().|.mientras|mientras(?!\()./;
+				var exMientras = /.+mientras(?!\().+|.+mientras|mientras(?!\().+/;
 				var exMientras1 = /mientras/;
-				var exSicumple = /.sicumple(?!\().|.sicumple|sicumple(?!\()./;
+				var exSicumple = /.+sicumple(?!\().|.+sicumple|sicumple(?!\().+/;
 				var exSicumple1 = /sicumple/;
+				var exImprimir = /.+imprimir(?!\().+|.+imprimir|imprimir(?!\().+/;
+				var exImprimir1 = /imprimir/;
+				var exVacio = /.+vacio.+|.+vacio|vacio.+/;
+				var exVacio1 = /vacio/;
+				var identificador = /_+[a-zA-Z]*[0-9]*[a-zA-Z]*/;
+				var exSiCumple = /.+sicumple(?!\().+|.+sicumple|sicumple(?!\().+/;
+				var exSiCumple1 = /sicumple/;
+				var exSino = /.+sino(?!\().+|.+sino|sino(?!\().+/;
+				var exSino1 = /sino/;
+				var exBoleano = /.+boleano.+|.+boleano|boleano.+/;
+				var exBoleano1 = /boleano/;
+				var exVerdadero = /.+verdadero(?!\;).+|.+verdadero|verdadero(?!\;).+/;
+				var exVerdadero1 = /verdadero/;
+				var exMientras = /.+mientras(?!\().+|.+mientras|mientras(?!\().+/;
+				var exMientras1 = /mientras/;
+				var exFalso = /.+falso(?!\;).+|.+falso|falso(?!\;).+/;
+				var exFalso1 = /falso/;
+				var exNumero = /[a-zA-Z]+[0-9]+[a-zA-Z]+/;
+				var exNumero1 = /[0-9]+/;
 
-				/*	var exSino1 = /.sino(?!\{).|.sino|sino(?!\{)./;
-					var exSino = /sino/;
-					var exVerdadero = /verdadero/;
-					var exFalso = /falso/;
-					var exRetornar = /retornar/;
-					var exOpcion = /opcion/;
-					var exCaso = /caso/;
-					var exRuptura = /ruptura/;
-					var exInvalido = /invalido/;
-					var exVacio = /vacio/;
-					var exImprimir = /imprimir/;
-					var exBoleano = /boleano/;*/
-				var exImprimir = /.imprimir(?!\().|.imprimir|imprimir(?!\()./;
-				var exImprimir1 = /imprimir/
 				for (var i = 0; i < longitudArrayPreToken1; i++) {
 					if (exVy.test(arrayPreToken1[i])) {
-						arrayPreTokensIdentificadores[contI] = arrayPreToken1[i].match(exVy);
+						arrayErrores[contI] = arrayPreToken1[i].match(exVy);
 						contI++;
 					} else if (exVy1.test(arrayPreToken1[i])) {
 						arrayPreTokensPalabrasReservadas[cont1] = arrayPreToken1[i].match(exVy1);
 						cont1++;
 					}
 					if (exYv.test(arrayPreToken1[i])) {
-						arrayPreTokensIdentificadores[contI] = arrayPreToken1[i].match(exYv);
+						arrayErrores[contI] = arrayPreToken1[i].match(exYv);
 						contI++;
 					} else if (exYv1.test(arrayPreToken1[i])) {
 						arrayPreTokensPalabrasReservadas[cont1] = arrayPreToken1[i].match(exYv1);
 						cont1++;
 					}
 					if (exEntero.test(arrayPreToken1[i])) {
-						arrayPreTokensIdentificadores[contI] = arrayPreToken1[i].match(exEntero);
+						arrayErrores[contI] = arrayPreToken1[i].match(exEntero);
 						contI++;
 					} else if (exEntero1.test(arrayPreToken1[i])) {
 						arrayPreTokensPalabrasReservadas[cont1] = arrayPreToken1[i].match(exEntero1);
 						cont1++;
 					}
 					if (exDecimal.test(arrayPreToken1[i])) {
-						arrayPreTokensIdentificadores[contI] = arrayPreToken1[i].match(exDecimal);
+						arrayErrores[contI] = arrayPreToken1[i].match(exDecimal);
 						contI++;
 					} else if (exDecimal1.test(arrayPreToken1[i])) {
 						arrayPreTokensPalabrasReservadas[cont1] = arrayPreToken1[i].match(exDecimal1);
 						cont1++;
 					}
 					if (exCadena.test(arrayPreToken1[i])) {
-						arrayPreTokensIdentificadores[contI] = arrayPreToken1[i].match(exCadena);
+						arrayErrores[contI] = arrayPreToken1[i].match(exCadena);
 						contI++;
 					} else if (exCadena1.test(arrayPreToken1[i])) {
 						arrayPreTokensPalabrasReservadas[cont1] = arrayPreToken1[i].match(exCadena1);
 						cont1++;
 					}
 					if (exPara.test(arrayPreToken1[i])) {
-						arrayPreTokensIdentificadores[contI] = arrayPreToken1[i].match(exPara);
+						arrayErrores[contI] = arrayPreToken1[i].match(exPara);
 						contI++;
 					} else if (exPara1.test(arrayPreToken1[i])) {
 						arrayPreTokensPalabrasReservadas[cont1] = arrayPreToken1[i].match(exPara1);
 						cont1++;
 					}
 					if (exMientras.test(arrayPreToken1[i])) {
-						arrayPreTokensIdentificadores[contI] = arrayPreToken1[i].match(exMientras);
+						arrayErrores[contI] = arrayPreToken1[i].match(exMientras);
 						contI++;
 					} else if (exMientras1.test(arrayPreToken1[i])) {
 						arrayPreTokensPalabrasReservadas[cont1] = arrayPreToken1[i].match(exMientras1);
 						cont1++;
 					}
-					if (exSicumple.test(arrayPreToken1[i])) {
-						arrayPreTokensIdentificadores[contI] = arrayPreToken1[i].match(exSicumple);
-						contI++;
-					} else if (exSicumple1.test(arrayPreToken1[i])) {
-						arrayPreTokensPalabrasReservadas[cont1] = arrayPreToken1[i].match(exSicumple1);
-						cont1++;
-					}
 					if (exImprimir.test(arrayPreToken1[i])) {
-						arrayPreTokensIdentificadores[contI] = arrayPreToken1[i].match(exImprimir);
+						arrayErrores[contI] = arrayPreToken1[i].match(exImprimir);
 						contI++;
 					} else if (exImprimir1.test(arrayPreToken1[i])) {
 						arrayPreTokensPalabrasReservadas[cont1] = arrayPreToken1[i].match(exImprimir1);
 						cont1++;
 					}
-
-
-				}
-
-				//identificadores
-				var exIdentificador = /_+[a-zA-Z]*[0-9]*[a-zA-Z]*|[a-zA-Z]+[0-9]*[a-zA-Z]*/;
-				var arrayPreTokensIdentificadores1 = [];
-				var arrayErrores = [];
-				var longitudArrayPreTokensIdentificadores = arrayPreTokensIdentificadores.length;
-				var cont2 = 0;
-				var contE = 0;
-				for (var i = 0; i < longitudArrayPreTokensIdentificadores; i++) {
-					if (exIdentificador.test(arrayPreTokensIdentificadores[i])) {
-						arrayPreTokensIdentificadores1[cont2] = arrayPreToken1[i].match(exIdentificador);
-						cont2++;
-					} else {
-						arrayErrores[contE] = arrayPreTokensIdentificadores[i];
-						contE++;
+					if (exSiCumple.test(arrayPreToken1[i])) {
+						arrayErrores[contI] = arrayPreToken1[i].match(exSiCumple);
+						contI++;
+					} else if (exSiCumple1.test(arrayPreToken1[i])) {
+						arrayPreTokensPalabrasReservadas[cont1] = arrayPreToken1[i].match(exSiCumple1);
+						cont1++;
 					}
+					if (exSino.test(arrayPreToken1[i])) {
+						arrayErrores[contI] = arrayPreToken1[i].match(exSino);
+						contI++;
+					} else if (exSino1.test(arrayPreToken1[i])) {
+						arrayPreTokensPalabrasReservadas[cont1] = arrayPreToken1[i].match(exSino1);
+						cont1++;
+					}
+					if (exBoleano.test(arrayPreToken1[i])) {
+						arrayErrores[contI] = arrayPreToken1[i].match(exBoleano);
+						contI++;
+					} else if (exBoleano1.test(arrayPreToken1[i])) {
+						arrayPreTokensPalabrasReservadas[cont1] = arrayPreToken1[i].match(exBoleano1);
+						cont1++;
+					}
+					if (exVerdadero.test(arrayPreToken1[i])) {
+						arrayErrores[contI] = arrayPreToken1[i].match(exVerdadero);
+						contI++;
+					} else if (exVerdadero1.test(arrayPreToken1[i])) {
+						arrayPreTokensPalabrasReservadas[cont1] = arrayPreToken1[i].match(exVerdadero1);
+						cont1++;
+					}
+					if (exFalso.test(arrayPreToken1[i])) {
+						arrayErrores[contI] = arrayPreToken1[i].match(exFalso);
+						contI++;
+					} else if (exFalso1.test(arrayPreToken1[i])) {
+						arrayPreTokensPalabrasReservadas[cont1] = arrayPreToken1[i].match(exFalso1);
+						cont1++;
+					}
+					if (exVacio.test(arrayPreToken1[i])) {
+						arrayErrores[contI] = arrayPreToken1[i].match(exVacio);
+						contI++;
+					} else if (exVacio1.test(arrayPreToken1[i])) {
+						arrayPreTokensPalabrasReservadas[cont1] = arrayPreToken1[i].match(exVacio1);
+						cont1++;
+					}
+					if (identificador.test(arrayPreToken1[i])) {
+						arrayPreTokensIdentificadores[contI] = arrayPreToken1[i].match(identificador);
+						contI++;
+					}
+					if (exNumero.test(arrayPreToken1[i])) {
+						arrayErrores[contI] = arrayPreToken1[i].match(exNumero);
+						contI++;
+					} else if (exNumero1.test(arrayPreToken1[i])) {
+						arrayPreTokensNumeros[cont1] = arrayPreToken1[i].match(exNumero1);
+						cont1++;
+					}
+
 				}
 
 				//operadores
@@ -228,6 +241,19 @@
 						cont2++;
 					}
 				}
+
+				//simbolos especiales
+				var arrayPreTokensSimbolosEspeciales = [];
+				var cont3 = 0;
+				for (var i = 0; i < longitudArrayPreToken; i++) {
+					if (arrayPreToken[i] == '<' || arrayPreToken[i] == '>' || arrayPreToken[i] == '='
+					) {
+						arrayPreTokensSimbolosEspeciales[cont3] = arrayPreToken[i];
+						cont3++;
+					}
+				}
+
+				htmlAnalisisLexico += '<h1>ANALISIS LÉXICO</h1>';
 
 				htmlAnalisisLexico += '<table>';
 				htmlAnalisisLexico += '<tr>';
@@ -251,10 +277,10 @@
 					htmlAnalisisLexico += '</tr>';
 
 				}
-				for (var index = 0; index < arrayPreTokensIdentificadores1.length; index++) {
+				for (var index = 0; index < arrayPreTokensIdentificadores.length; index++) {
 
 					htmlAnalisisLexico += '<tr>';
-					htmlAnalisisLexico += '<td>' + arrayPreTokensIdentificadores1[index] + '</td>';
+					htmlAnalisisLexico += '<td>' + arrayPreTokensIdentificadores[index] + '</td>';
 					htmlAnalisisLexico += '<td>Identificador</td>';
 					htmlAnalisisLexico += '</tr>';
 
@@ -264,6 +290,22 @@
 					htmlAnalisisLexico += '<tr>';
 					htmlAnalisisLexico += '<td>' + arrayPreTokensOperadores[index] + '</td>';
 					htmlAnalisisLexico += '<td>Operadores</td>';
+					htmlAnalisisLexico += '</tr>';
+
+				}
+				for (var index = 0; index < arrayPreTokensSimbolosEspeciales.length; index++) {
+
+					htmlAnalisisLexico += '<tr>';
+					htmlAnalisisLexico += '<td>' + arrayPreTokensSimbolosEspeciales[index] + '</td>';
+					htmlAnalisisLexico += '<td>Simbolos especiales</td>';
+					htmlAnalisisLexico += '</tr>';
+
+				}
+				for (var index = 0; index < arrayPreTokensNumeros.length; index++) {
+
+					htmlAnalisisLexico += '<tr>';
+					htmlAnalisisLexico += '<td>' + arrayPreTokensNumeros[index] + '</td>';
+					htmlAnalisisLexico += '<td>Numeros</td>';
 					htmlAnalisisLexico += '</tr>';
 
 				}
@@ -326,8 +368,9 @@
 		<article id="areaAnalisis">
 			<article id="slide1">
 				<article id="areaAnalisisLexico">
-					<fieldset>
-						<legend>Análisis Léxico: </legend>
+
+					<fieldset style="overflow-y: scroll;">
+
 						<div id="analisisLexico"></div>
 					</fieldset>
 				</article>
@@ -348,7 +391,8 @@
 				<article id="areaResultados">
 					<fieldset>
 						<legend>Resultados: </legend>
-						<textarea id="resultados" placeholder="Resultados..." name="comment" form="codeform" disabled=true></textarea>
+						<textarea id="resultados" placeholder="Resultados..." name="comment" form="codeform"
+							disabled=true></textarea>
 					</fieldset>
 				</article>
 			</article>
@@ -367,18 +411,15 @@
 				</article>
 				<div id="botones3">
 					<input type="button" id="analisisSemantico-boton" value="Análisis Semántico" />
-				</div>	
+				</div>
 				<div id="botones4">
 					<input type="button" id="tablaSimbolos-boton" value="Tabla de Símbolos" />
 				</div>
 			</article>
 		</article>
-		<!--
-		<article id="areaErrores"></article>
-		-->
 	</section>
 
-	
+
 	<div id="botones5">
 		<input type="button" id="resultado-boton" value="Compilar" />
 		<input type="button" id="borrar-boton" value="Nuevo" />
@@ -391,9 +432,15 @@
 					<p>Ver</p>
 				</div>
 			</div>
-			<div class="oPmenu" id="t1"><p>Análisis Léxico<br>y Sintáctico</p></div>
-			<div class="oPmenu" id="t2"><p>Mostrar Resultado</p></div>
-			<div class="oPmenu" id="t3"><p>Análisis Semántico y<br>Tabla de Simbolos</p></div>
+			<div class="oPmenu" id="t1">
+				<p>Análisis Léxico<br>y Sintáctico</p>
+			</div>
+			<div class="oPmenu" id="t2">
+				<p>Mostrar Resultado</p>
+			</div>
+			<div class="oPmenu" id="t3">
+				<p>Análisis Semántico y<br>Tabla de Simbolos</p>
+			</div>
 		</div>
 	</section>
 	<footer>

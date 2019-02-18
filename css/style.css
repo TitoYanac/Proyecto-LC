@@ -55,9 +55,6 @@ textarea {
     line-height: 16px;
 }
 
-#areaCodigo > form > fieldset {
-}
-
 #areaCodigo > form  > fieldset > textarea {
 	width: 100%;
 	height: 410px;
@@ -88,6 +85,7 @@ textarea {
 	width: 50%;
 	height: 447px;
 	padding: 0 10px;
+	
 }
 
 
@@ -95,6 +93,7 @@ textarea {
 	width: 100%;
 	height: 100%;
 	padding: 6px 10px 28px 10px;
+	
 }
 
 #areaAnalisis > article > article > fieldset > textarea {
@@ -102,13 +101,6 @@ textarea {
 	height: 100%;
 	font-size: 12px;
 	line-height: 16px;
-}
-
-
-#botones1 {
-}
-
-#botones2, #botones3, #botones4 {
 }
 
 #botones5 >input{
@@ -184,8 +176,6 @@ textarea {
 	font-size: 20px;
 }
 
-footer{
-}
 #menuContainer {
 	position: fixed;
 	bottom: 0px;
@@ -226,7 +216,6 @@ footer{
 	-moz-box-shadow: -5px -5px 25px rgba(68,68,68,0.6);
 	-webkit-box-shadow: -5px -5px 25px rgba(68,68,68,0.6);
 	box-shadow: -5px -5px 25px rgba(68,68,68,0.6);
-	scale
 }
 #menuContainer  > #relativo > #overMenu{
 	z-index: 10;
