@@ -1,11 +1,11 @@
 vacio VY()
 
   entero _variable1;
-  variable1 = 5
+  _variable1 = 5
 
   sicumple ( 5 >= 4){
-      imprimir ( " mayor que 4 " )             
+      imprimir ( "mayor" )             
   } sino {
-      imprimir ( " menor que 4 " ) 
+      imprimir ( "menor" ) 
   }
 YV

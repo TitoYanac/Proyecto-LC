@@ -7,6 +7,6 @@ vacio VY()
 
  _variable3 = _variable1 + _variable2;
 
- imprimir ( " Suma: " _variable3 );
+ imprimir ( "Suma:" _variable3 );
 
 YV
