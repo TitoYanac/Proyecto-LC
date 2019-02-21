@@ -1,10 +1,13 @@
 var tokens;
 var tokenActual;
 var m,n;
+var analisis;
 $('#analisisSintactico-boton').click(function () { 
  	tokens = new Array();
 	tokenActual ="";
+	analisis="";
 	m=0,n=0;
+	document.getElementById("analisisSintactico").value=analisis;
 	if(conseguirArrayDeTokens()=="ready"){
 		analizarGramatica();
 	}
@@ -50,7 +53,7 @@ $('#analisisSintactico-boton').click(function () {
 		if(validarTipo()=="valido"&&tokenActual!="$"){
 			if(validarNombre()=="valido"&&tokenActual!="$"){
 				if(validarAperturaFuncion()=="valido"&&tokenActual!="$"){
-					if(ValidarSentencias()=="valido"&&tokenActual!="$"){
+					if(ValidarSentencias("YV")=="valido"&&tokenActual!="$"){
 						if(validarCierreFuncion()=="valido"&&tokenActual!="$"){
 							return "valido";
 						}
@@ -60,36 +63,90 @@ $('#analisisSintactico-boton').click(function () {
 		}
 	}
 	function validarCierreFuncion() {
-		return "valido";
-	}
-	function ValidarSentencias() {
-		return "valido";
-	}
-	function validarAperturaFuncion() {
-		if(tokenActual[0]=="V"&&tokenActual[0]=="Y"){
-			
-		}else{
-			var error="Apertura de funcion incorrecto";
+		var expReg = /^YV$/;
+		if (expReg.test(tokenActual) == false){
+			var error="Cierre de funcion incorrecto";
 			marcarError(m,error,tokenActual);
+	    }else{
+	        siguienteToken();
+	    }
+		return "valido";
+	}
+	function ValidarSentencias(cierre) {
+		/*var tipoSentencia= determinarTipoSentencia();
+		tokenActual="";
+		for (var i = n; i < tokens[m].length; i++) {
+			tokenActual+=tokens[m][i]+" ";
 		}
-		m++,n=0;
-		tokenActual =tokens[m][n];
+		if(tokenActual!=cierre){
+			var e1=/^\s*(entero|decimal|boleano|cadena|caracter)\s+_[a-zA-Z][a-zA-Z0-9]*(\s*|,_[a-zA-Z][a-zA-Z0-9]*\s*)+\s*;\s*$/; //expReg_declararVariable
+			var e2=/^\s*_[a-zA-Z][a-zA-Z0-9]*\s*=\s*([0-9]*|[0-9]*\.[0-9]*|"[a-zA-Z0-9]*"|'[a-zA-Z0-9]'|''|_[a-zA-Z][a-zA-Z0-9]*)\s*((\/|\*|\-|\+)\s*([0-9]*|[0-9]*\.[0-9]*|"[a-zA-Z0-9]*"|'[a-zA-Z0-9]'|''|_[a-zA-Z][a-zA-Z0-9]*))*\s*;\s*$/; //expReg_asignarValor
+			
+
+		}
+
+		n=tokens[m].length;
+		siguienteToken();*/
 		return "valido";
 	}
 
-	function validarParametroFuncion(argument) {
-		
+	function determinarTipoSentencia() {
+		while(tokenActual!=""&&n<tokens[m].length){
+			siguienteToken();
+		}
+		var expReg1=/^\s*(entero|decimal|boleano|cadena|caracter)\s*$/;
+		if (expReg1.test(tokenActual) == true){
+			return "declaracion";
+	    }
+	    var expReg2=/^\s*mientras\s*$/;
+		if (expReg2.test(tokenActual) == true){
+			return "mientras";
+	    }
+	    var expReg3=/^\s*para\s*$/;
+		if (expReg3.test(tokenActual) == true){
+			return "para";
+	    }
+	    var expReg4=/^\s*_[a-zA-Z][a-zA-Z0-9]*\s*$/;
+		if (expReg4.test(tokenActual) == true){
+			return "asignacion";
+	    }
+	    var expReg5=/^\s*[a-zA-Z][a-zA-Z0-9]*\s*$/;
+		if (expReg5.test(tokenActual) == true){
+			return "LlamarFuncion";
+	    }
+	    if (tokenActual== "}"){
+			return "cierreSentencia";
+	    }
 	}
+
+
+	function validarAperturaFuncion() {
+		tokenActual="";
+		for (var i = n; i < tokens[m].length; i++) {
+			tokenActual+=tokens[m][i]+" ";
+		}
+
+		var expReg = /^\s*(VY\s*\(\s*(entero|decimal|boleano|cadena|caracter)\s+_[a-zA-Z][a-zA-Z0-9]*\s*\)|VY\s*\(\s*(entero|decimal|boleano|cadena|caracter)\s+_[a-zA-Z][a-zA-Z0-9]*\s*(,\s*(entero|decimal|boleano|cadena|caracter)\s+_[a-zA-Z][a-zA-Z0-9]*\s*)+\)|VY\s*\(\s*\))\s*$/;
+
+		if (expReg.test(tokenActual) == false){
+			var error="Apertura de funcion incorrecto";
+			marcarError(m,error,tokenActual);
+	    }
+
+		n=tokens[m].length;
+		siguienteToken();
+		return "valido";
+	}
+
 	function validarNombre() {
-		console.log("entro a validar nombre "+tokenActual);
-		var expReg = /^[a-zA-Z]+\d*$/;
-		console.log(expReg.test(tokenActual));
+		var expReg = /^[a-zA-Z][a-zA-Z0-9]*$/;
 		if (expReg.test(tokenActual) == false){
 			var error="NOMBRE de funcion incorrecto";
 			marcarError(m,error,tokenActual);
 	    }else{
 	        siguienteToken();
 	    }
+	    return "valido";
 	}
 
 
@@ -104,10 +161,11 @@ $('#analisisSintactico-boton').click(function () {
 
 	function marcarError(m,er,tka) {
 		var c = document.getElementById("codeLine").childNodes;
-  		console.log(er+ "\n"+ tka);
   		c[m].setAttribute("style", "background-color: red;");
+  		analisis+="Error en la linea "+m+" -> "+er+" ("+tka+")\n";
+  		document.getElementById("analisisSintactico").value=analisis;
 	}
 
 	function ImprimirAnalisis() {
-		// body...
+		document.getElementById("analisisSintactico").value=analisis;
 	}
