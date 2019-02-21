@@ -282,17 +282,20 @@ textarea {
 	display: none;
 }
 
-/*
-#areaCompilacion,#areaErrores {
-	height: 217px;
-	border: 1px black solid;
-	margin-top: 7px;
+
+table,
+th,
+td {
+	border: 1px solid green;
+	text-align: center;
+	background-color: wheat;
+	padding: 2px;
 }
-*/
-/*
-#areaErrores{
+
+th {
+	text-align: center;
+	background-color: sienna;
 }
-*/
 
 @media screen and (min-width: 400px) and (max-width: 600px) {
 	#areaCodigo, #areaAnalisis {
