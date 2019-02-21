@@ -8,9 +8,24 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<!-- redimensiona la vista de la pagina web para cada tipo de dispositivo -->
 	<title>Proyecto LC ++</title>
+	<script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+	<script type="text/javascript" src="js/borrar.js"></script>
+	<script type="text/javascript" src="js/analisisLexico.js"></script>
+	<script type="text/javascript" src="js/analisisSintactico.js"></script>
 	<link rel="stylesheet" type="text/css" href="css/reset.css">
 	<link rel="stylesheet" type="text/css" href="css/estilos.css">
-	
+
+	<script type="text/javascript">
+		$(document).ready(function () {
+			//controles de eventos
+			$('#resultado-boton').click(function () { resultado(); });
+			$('#analisisLexico-boton').click(function () { analisisLexico(); });
+			$('#analisisSintactico-boton').click(function () { analisisSintactico(); });
+			$('#analisisSemantico-boton').click(function () { analisisSemantico(); });
+			$('#tablaSimbolos-boton').click(function () { tablaSimbolos(); });
+			$('#borrar-boton').click(function () { borrarCodigo(); });
+		});
+	</script>
 </head>
 
 <body>
@@ -114,10 +129,6 @@
 	</section>
 	<footer>
 		<!-- JavaScript -->
-
-		<script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
-		<script type="text/javascript" src="js/analisisLexico.js"></script>
-		<script type="text/javascript" src="js/analisisSintactico.js"></script>
 		<script type="text/javascript" src="js/animacion.js"></script>
 	</footer>
 </body>
