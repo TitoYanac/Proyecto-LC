@@ -46,6 +46,8 @@ function analisisLexico() {
     var exVy1 = /VY/;
     var exYv = /.+YV.+|.+YV|YV.+/;
     var exYv1 = /YV/;
+    var exPrincipal = /.+entero.+|.+entero|entero.+/;
+    var exPrincipal1 =  /principal/;
     var exEntero = /.+entero.+|.+entero|entero.+/;
     var exEntero1 = /entero/;
     var exDecimal = /.+decimal.+|.+decimal|decimal.+/;
@@ -98,7 +100,13 @@ function analisisLexico() {
         } else if (texto.test(arrayPreToken1[i])) {
             arrayPreTokensTextos[cont5] = arrayPreToken1[i].match(texto1);
             cont5++;
-        } else if (exVy.test(arrayPreToken1[i])) {
+        } else if (exPrincipal.test(arrayPreToken1[i])) {
+            arrayErrores[contI] = arrayPreToken1[i].match(exPrincipal);
+            contI++;
+        } else if (exPrincipal1.test(arrayPreToken1[i])) {
+            arrayPreTokensPalabrasReservadas[cont1] = arrayPreToken1[i].match(exPrincipal1);
+            cont1++;
+        }else if (exVy.test(arrayPreToken1[i])) {
             arrayErrores[contI] = arrayPreToken1[i].match(exVy);
             contI++;
         } else if (exVy1.test(arrayPreToken1[i])) {

@@ -1,4 +1,4 @@
-vacio a VY()
+vacio principal VY()
 
    entero _tamanio = 10
    cadena _mensaje = "hola"
