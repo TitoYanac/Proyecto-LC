@@ -1,9 +1,19 @@
-vacio VY()
+vacio principal VY()
 
    entero _tamanio = 100
 
-  <-- esto es un comentario -->
-   para ( entero _var = 0, _var < _tamanio, _var ++){
-        imprimir ( _var )
+  <-- Pasamos por parametro la variable _tamanio -->
+
+  imprimir100numeros(_tamanio)
+
+YV
+
+vacio imprimir100numeros VY(entero _size)
+
+  <-- Recibimos e imprimimos numeros del 1 a _size -->
+
+   para ( entero _var = 0; _var < _size; _var++ ){
+
+        imprimir( _var )
    }
 YV

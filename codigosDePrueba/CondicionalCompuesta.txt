@@ -1,11 +1,12 @@
-vacio VY()
+vacio principal VY()
 
-  entero _variable1;
+  entero _variable1
   _variable1 = 5
 
-  sicumple ( 5 >= 4){
-      imprimir ( "mayor" )             
-  } sino {
-      imprimir ( "menor" ) 
+  sicumple (_var <10 ) {
+      imprimir( "mayor" )             
+  }
+ sino {
+      imprimir( "menor" ) 
   }
 YV

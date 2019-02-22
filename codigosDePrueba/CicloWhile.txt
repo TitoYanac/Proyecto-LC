@@ -1,11 +1,11 @@
-vacio VY()
+vacio a VY()
 
    entero _tamanio = 10
    cadena _mensaje = "hola"
    entero _var = 0
 
    mientras ( _tamanio > _var ) {
-      imprimir ( _mensaje )
-      _var ++
+      imprimir( _mensaje )
+      _var++
    }	
 YV

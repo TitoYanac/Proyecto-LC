@@ -1,12 +1,13 @@
-vacio VY()
+vacio principal VY()
 
- entero _variable1, _variable2, _variable3; decimal _variable4;
+ entero _variable1,_variable2 , _variable3
+ cadena _variable4
 	
- _variable1 = 5;
- _variable2 = 7;
+ _variable1 = 5
+ _variable2 = 7
 
- _variable3 = _variable1 + _variable2;
-
- imprimir ( "Suma:" _variable3 );
+ _variable3 = _variable1 + _variable2
+ _variable4 = "suma" + _variable3 
+ imprimir( _variable4 )
 
 YV
