@@ -22,18 +22,15 @@ TextAreaCodigo.addEventListener("keyup", function(event) {
 var menu = document.getElementById("overMenu");
 var op1 = document.getElementById("t1");
 var op2 = document.getElementById("t2");
-var op3 = document.getElementById("t3");
 var DisplayMenu=0;
 menu.addEventListener("click", function(event) {
 	if(DisplayMenu==0){
 		op1.setAttribute("style", "opacity: 1; display: block;");
 		op2.setAttribute("style", "opacity: 1; display: block;");
-		op3.setAttribute("style", "opacity: 1; display: block;");
 		DisplayMenu=1;
 	}else{
 		op1.setAttribute("style", "opacity: 0; display: none;");
 		op2.setAttribute("style", "opacity: 0; display: none;");
-		op3.setAttribute("style", "opacity: 0; display: none;");
 		DisplayMenu=0;
 	}
 });
@@ -48,9 +45,5 @@ op2.addEventListener("click", function(event) {
 	slide2.setAttribute("style", "opacity: 1; display: block;");
 	slide3.setAttribute("style", "opacity: 1; display: none;");
 });
-op3.addEventListener("click", function(event) {
-	slide1.setAttribute("style", "opacity: 1; display: none;");
-	slide2.setAttribute("style", "opacity: 1; display: none;");
-	slide3.setAttribute("style", "opacity: 1; display: block;");
-});
+
 

@@ -80,14 +80,13 @@ textarea {
 }
 
 #areaAnalisis ,#areaAnalisis > article > article{
-	display: inline-block;
+	/*display: inline-block;*/
 	float: left;
 	width: 50%;
 	height: 447px;
 	padding: 0 10px;
 	
 }
-
 
 #areaAnalisis > article > article > fieldset {
 	width: 100%;
@@ -103,78 +102,66 @@ textarea {
 	line-height: 16px;
 }
 
-#botones5 >input{
-	margin-right: 20px;
-}
-
- #botones5 > #resultado-boton {
-	border-radius: 5px;
-	color: white;
-	background-color: rgb(0, 140, 186);
-	font-size: 20px;
-	display: inline-block;
+#botones1 > #analisisLexico-boton {
 	float: left;
-	margin-left: 10px;
+	margin-top: 20px;
+	margin-left: 5%;
+	text-decoration: none;
+    padding: 10px;
+    font-weight: 600;
+    font-size: 20px;
+    color: #ffffff;
+    background-color: #1883ba;
+    border-radius: 6px;
+	border: 2px solid #0016b0;
+	box-shadow: 0 0 40px rgb(9, 10, 14);
+	
 }
 
-#botones1> #analisisLexico-boton {
-	border-radius: 5px;
-	color: white;
-	background-color: rgb(76, 175, 80);
-	padding: 5px;
-	font-size: 20px;
-	display: inline-block;
+#botones1 > #analisisLexico-boton:hover{
+	opacity: 0.6;
+	background-color: #1ab46c;
+	color: #000000;
+	box-shadow: 0 0 40px rgb(211, 231, 27);
+  }
+
+#botones2 > #analisisSintactico-boton {
 	float: left;
-	margin-left: 10px;
+	margin-top: 20px;
+	margin-left: 18%;
+	text-decoration: none;
+    padding: 10px;
+    font-weight: 600;
+    font-size: 20px;
+    color: #ffffff;
+    background-color: #1883ba;
+    border-radius: 6px;
+	border: 2px solid #0016b0;
+	box-shadow: 0 0 40px rgb(9, 10, 14);
+	
 }
 
-#botones5 > #borrar-boton {
-	border-radius: 5px;
-	color: white;
-	background-color: rgb(86, 76, 175);
-	padding-left: 15px;
-	padding-right: 20px;
-	font-size: 20px;
+#botones2 > #analisisSintactico-boton:hover{
+	opacity: 0.6;
+	background-color: #19272e;
+	color: rgb(185, 226, 35);
+	box-shadow: 0 0 40px #03f;
+  }
+
+#botones3 {
+	position:absolute;
+	top: 50px;
+	left: 45%;
+
 }
 
-#botones5 > #ayuda-boton {
-	border-radius: 5px;
-	color: white;
-	background-color: rgb(216, 14, 14);
-	padding-left: 5px;
-	padding-right: 20px;
-	font-size: 20px;
-}
+.tbl-content{
+	height:400px;
+	overflow-x:auto;
+	margin-top: 0px;
+	border: 1px solid rgba(255,255,255,0.3);
+  }
 
-#botones2> #analisisSintactico-boton {
-	border-radius: 5px;
-	color: white;
-	background-color: rgb(76, 175, 80);
-	padding: 5px;
-	font-size: 20px;
-	display: inline-block;
-	float: left;
-	margin-left: 10px;
-}
-
-#botones3> #analisisSemantico-boton {
-	border-radius: 5px;
-	color: white;
-	background-color: rgb(76, 175, 80);
-	padding: 5px;
-	font-size: 20px;
-	display: inline-block;
-	float: left;
-	margin-left: 10px;
-}
-
-#botones4> #tablaSimbolos-boton {
-	border-radius: 5px;
-	color: white;
-	background-color: rgb(76, 175, 80);
-	padding: 5px;
-	font-size: 20px;
-}
 
 #menuContainer {
 	position: fixed;

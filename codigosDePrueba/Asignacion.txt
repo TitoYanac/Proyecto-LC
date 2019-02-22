@@ -7,7 +7,7 @@ vacio principal VY()
  _variable2 = 7
 
  _variable3 = _variable1 + _variable2
- _variable4 = "suma" + _variable3 
+ _variable4 = 10 + _variable3 
  imprimir( _variable4 )
 
 YV

@@ -223,17 +223,23 @@ function analisisLexico() {
         }
     }
 
-    htmlAnalisisLexico += '<h1>ANALISIS LÉXICO</h1>';
+    htmlAnalisisLexico += '<div class="tbl-header">';
     htmlAnalisisLexico += '<table>';
+    htmlAnalisisLexico += '<thead>';
     htmlAnalisisLexico += '<tr>';
     htmlAnalisisLexico += '<th>Tokens</th>';
     htmlAnalisisLexico += '<th>Categoría</th>';
     htmlAnalisisLexico += '</tr>';
-
+    htmlAnalisisLexico += '</thead>';
+    htmlAnalisisLexico += '</table>';
+    htmlAnalisisLexico += '</div>';
+    htmlAnalisisLexico += '<div class="tbl-content">';
+    htmlAnalisisLexico += '<table>';
+    htmlAnalisisLexico += '<tbody>';
     for (var index = 0; index < arrayPreTokensDelimitadores.length; index++) {
 
         htmlAnalisisLexico += '<tr>';
-        htmlAnalisisLexico += '<td>' + arrayPreTokensDelimitadores[index] + '</td>';
+        htmlAnalisisLexico += '<td >' + arrayPreTokensDelimitadores[index] + '</td>';
         htmlAnalisisLexico += '<td>Delimitador</td>';
         htmlAnalisisLexico += '</tr>';
 
@@ -302,7 +308,10 @@ function analisisLexico() {
         htmlAnalisisLexico += '</tr>';
 
     }
+    htmlAnalisisLexico += '</tbody>';
     htmlAnalisisLexico += '</table>';
+    htmlAnalisisLexico += '</div>';
+    
 
     $('#analisisLexico').html(htmlAnalisisLexico);
 }

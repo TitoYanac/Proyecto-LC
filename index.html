@@ -42,7 +42,7 @@
 			<form id="codeform">
 				<fieldset>
 					<legend>Escribe tu Código aquí: </legend>
-					<textarea id="codigo" placeholder="Ingrese el código..." name="comment" form="codeform"></textarea>
+					<textarea id="codigo" placeholder="Ingrese el código..." name="comment" form="codeform" spellcheck="false"></textarea>
 				</fieldset>
 			</form>
 			<aside id="codeLine">
@@ -52,9 +52,8 @@
 		<article id="areaAnalisis">
 			<article id="slide1">
 				<article id="areaAnalisisLexico">
-
-					<fieldset style="overflow-y: scroll;">
-
+					<fieldset >
+						<legend>Análisis Léxico: </legend>
 						<div id="analisisLexico"></div>
 					</fieldset>
 				</article>
@@ -64,12 +63,6 @@
 						<textarea id="analisisSintactico" disabled=true></textarea>
 					</fieldset>
 				</article>
-				<div id="botones1">
-					<input type="button" id="analisisLexico-boton" value="Análisis Léxico" />
-				</div>
-				<div id="botones2">
-					<input type="button" id="analisisSintactico-boton" value="Análisis Sintáctico" />
-				</div>
 			</article>
 			<article id="slide2">
 				<article id="areaResultados">
@@ -80,34 +73,16 @@
 					</fieldset>
 				</article>
 			</article>
-			<article id="slide3">
-				<article id="areaAnalisisSemantico">
-					<fieldset>
-						<legend>Análisis Semántico: </legend>
-						<textarea id="analisisSemantico" disabled=true></textarea>
-					</fieldset>
-				</article>
-				<article id="areaTablaSimbolos">
-					<fieldset>
-						<legend>Tabla de Símbolos: </legend>
-						<textarea id="tablaSimbolos" disabled=true></textarea>
-					</fieldset>
-				</article>
-				<div id="botones3">
-					<input type="button" id="analisisSemantico-boton" value="Análisis Semántico" />
-				</div>
-				<div id="botones4">
-					<input type="button" id="tablaSimbolos-boton" value="Tabla de Símbolos" />
-				</div>
-			</article>
 		</article>
 	</section>
-
-
-	<div id="botones5">
-		<input type="button" id="resultado-boton" value="Compilar" />
-		<input type="button" id="borrar-boton" value="Nuevo" />
-		<input type="button" id="ayuda-boton" value="Ayuda" />
+		<div id="botones1">
+			<input type="button" id="analisisLexico-boton" value="Análisis Léxico" />
+		</div>
+		<div id="botones2">
+			<input type="button" id="analisisSintactico-boton" value="Análisis Sintáctico" />
+		</div>
+	<div id="botones3">
+		<input type=image id="borrar-boton" src="images/borrador.png" width="55" height="55">
 	</div>
 	<section id="menuContainer">
 		<div id="relativo">
@@ -121,9 +96,6 @@
 			</div>
 			<div class="oPmenu" id="t2">
 				<p>Mostrar Resultado</p>
-			</div>
-			<div class="oPmenu" id="t3">
-				<p>Análisis Semántico y<br>Tabla de Simbolos</p>
 			</div>
 		</div>
 	</section>
