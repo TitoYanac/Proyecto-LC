@@ -222,23 +222,6 @@ function analisisLexico() {
         }
     }
 
-    
-    //textos
-    var arrayPreTokensTextos = [];
-    var exTex = //
-    var cont8 = 0;
-    for (var i = 0; i < longitudArrayPreToken; i++) {
-        switch()
-
-        if (arrayPreToken[i] == '<' || arrayPreToken[i] == '>' || arrayPreToken[i] == '='
-        ) {
-            arrayPreTokensSimbolosEspeciales[cont7] = arrayPreToken[i];
-            cont7++;
-        }
-    }
-
-
-
     htmlAnalisisLexico += '<div class="tabla-lexico">';
     htmlAnalisisLexico += '<table>';
     htmlAnalisisLexico += '<thead>';
