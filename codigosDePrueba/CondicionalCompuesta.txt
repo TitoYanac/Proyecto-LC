@@ -6,8 +6,8 @@ vacio principal VY()
   sicumple (_var < 10 ) {
       imprimir( "mayor" )             
   }
- sino {
+  sino {
       imprimir( "menor" ) 
   }
-  
+
 YV

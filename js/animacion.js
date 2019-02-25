@@ -37,10 +37,12 @@ menu.addEventListener("click", function(event) {
 
 op1.addEventListener("click", function(event) {
 	slide1.setAttribute("style", "opacity: 1; display: block;");
+	bienvenida.setAttribute("style", "opacity: 1; display: none;");
 	slide2.setAttribute("style", "opacity: 1; display: none;");
 });
 op2.addEventListener("click", function(event) {
 	slide1.setAttribute("style", "opacity: 1; display: none;");
+	bienvenida.setAttribute("style", "opacity: 1; display: none;");
 	slide2.setAttribute("style", "opacity: 1; display: block;");
 });
 

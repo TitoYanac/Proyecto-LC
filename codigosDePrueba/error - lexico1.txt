@@ -1,7 +1,7 @@
-vacio $VY()
+vacio principal $VY()
 
-%entero _var = 5;
+%entero _var = 5
 
-impr8ir ( _var );
+impr8ir( _var )
 
 YV

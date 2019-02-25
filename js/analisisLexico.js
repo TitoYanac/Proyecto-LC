@@ -45,8 +45,6 @@ function analisisLexico() {
     var exVy1 = /VY/;
     var exYv = /.+YV.+|.+YV|YV.+/;
     var exYv1 = /YV/;
-    var exPrincipal = /.+entero.+|.+entero|entero.+/;
-    var exPrincipal1 =  /principal/;
     var exEntero = /.+entero.+|.+entero|entero.+/;
     var exEntero1 = /entero/;
     var exDecimal = /.+decimal.+|.+decimal|decimal.+/;
@@ -72,6 +70,11 @@ function analisisLexico() {
 
     var texto = /["].+[a-zA-Z]+[0-9]*.+["]/;
     var texto1 = /(?!\()(?!\").+[a-zA-Z]+[0-9]*(?!\")./
+
+    var exPrincipal = /.+principal.+|.+principal|principal.+/;
+    var exPrincipal1 = /principal/;
+    var exNombreFuncion = /.+imprimirNumeros.+|.+imprimirNumeros|imprimirNumeros.+/;
+    var exNombreFuncion1 = /imprimirNumeros/;
 
     var exError = /[a-zA-Z]+(?![a-zA-Z]).+[a-zA-Z]+|[a-zA-Z]+/
     var exidentificador = /_+[a-zA-Z]*[0-9]*[a-zA-Z]*/;
@@ -103,9 +106,15 @@ function analisisLexico() {
             arrayErrores[contI] = arrayPreToken1[i].match(exPrincipal);
             contI++;
         } else if (exPrincipal1.test(arrayPreToken1[i])) {
-            arrayPreTokensPalabrasReservadas[cont1] = arrayPreToken1[i].match(exPrincipal1);
-            cont1++;
-        }else if (exVy.test(arrayPreToken1[i])) {
+            arrayPreTokensIdentificadores[cont3] = arrayPreToken1[i].match(exPrincipal1);
+            cont3++;
+        } else if (exNombreFuncion.test(arrayPreToken1[i])) {
+            arrayErrores[contI] = arrayPreToken1[i].match(exNombreFuncion);
+            contI++;
+        } else if (exNombreFuncion1.test(arrayPreToken1[i])) {
+            arrayPreTokensIdentificadores[cont3] = arrayPreToken1[i].match(exNombreFuncion1);
+            cont3++;
+        } else if (exVy.test(arrayPreToken1[i])) {
             arrayErrores[contI] = arrayPreToken1[i].match(exVy);
             contI++;
         } else if (exVy1.test(arrayPreToken1[i])) {
@@ -310,7 +319,7 @@ function analisisLexico() {
     htmlAnalisisLexico += '</tbody>';
     htmlAnalisisLexico += '</table>';
     htmlAnalisisLexico += '</div>';
-    
+
 
     $('#analisisLexico').html(htmlAnalisisLexico);
 }

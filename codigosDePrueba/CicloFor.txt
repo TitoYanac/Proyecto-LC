@@ -4,11 +4,11 @@ vacio principal VY()
 
   <-- Pasamos por parametro la variable _tamanio -->
 
-  imprimir100numeros(_tamanio)
+  imprimirNumeros(_tamanio)
 
 YV
 
-vacio imprimir100numeros VY(entero _size)
+vacio imprimirNumeros VY(entero _size)
 
   <-- Recibimos e imprimimos numeros del 1 a _size -->
 

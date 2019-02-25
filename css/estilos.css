@@ -63,6 +63,16 @@ textarea {
     line-height: 16px;
 }
 
+#bienvenida {
+	position: absolute;
+	margin-left: 51%;
+	width: 47%;
+}
+
+#bienvenida > span {
+	font-size: 45px;
+}
+
  #areaCodigosEjemplos{
 	position: absolute;
 	margin-left: 51%;
@@ -90,8 +100,6 @@ textarea {
     border-radius: 6px;
 	box-shadow: 0 0 10px rgb(53, 167, 110);
 }
-
-
 
 #areaAnalisis ,#areaAnalisis > article > article{
 	/*display: inline-block;*/

@@ -14,6 +14,7 @@
 	<script type="text/javascript" src="js/analisisSintactico.js"></script>
 	<link rel="stylesheet" type="text/css" href="css/reset.css">
 	<link rel="stylesheet" type="text/css" href="css/estilos.css">
+	<link rel="stylesheet" type="text/css" href="css/estilos2.css">
 
 	<script type="text/javascript">
 		$(document).ready(function () {
@@ -63,20 +64,41 @@
 				</article>
 			</article>
 		</article>
+		<article id="bienvenida">
+				<div class="w3-card-4 w3-margin" style="width:70%">
+
+						<header class="w3-container w3-light-grey">
+						  <h3>Bienvenido al Proyecto del curso</h3>
+						</header>
+						
+						<div class="w3-container">
+						  <hr>
+						  <img src="images/contacto.png" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">
+						  <p>Luis Vílchez, estudiante de Ingeniería de Software de la Universidad Nacional Mayor de San Marcos</p><br>
+						</div>
+						<div class="w3-container">
+						  <hr>
+						  <img src="images/contacto.png" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">
+						  <p>Tito Yanac, estudiante de Ingeniería de Software de la Universidad Nacional Mayor de San Marcos</p><br>
+						</div>
+		</article>
+
 		<article id="areaCodigosEjemplos">
-			<article id="slide2">
-				<fieldset>
+			<article id="slide2" style="display: none;">
+				<fieldset style="height: 447px;">
 					<legend>Códigos de Prueba: </legend>
 					<div id="botones-prueba">
-						<input type="button" class="mostrar" value="Asignacion" onclick="mostrarAsignacion()"/>
-						<input type="button" class="mostrar" value="Para" onclick="mostrarPara()"/>
-						<input type="button" class="mostrar" value="Mientras" onclick="mostrarMientras()"/>
-						<input type="button" class="mostrar" value="Condicional" onclick="mostrarCondicional()"/>
-						<input type="button" class="mostrar" value="Condicional Compuesta" onclick="mostrarCondicionalCompuesta()"/>
-						<input type="button" class="mostrar" value="Error Lexico" onclick="mostrarErrorLexico()"/>
+						<input type="button" class="mostrar" value="Asignacion" onclick="mostrarAsignacion()" />
+						<input type="button" class="mostrar" value="Para" onclick="mostrarPara()" />
+						<input type="button" class="mostrar" value="Mientras" onclick="mostrarMientras()" />
+						<input type="button" class="mostrar" value="Condicional" onclick="mostrarCondicional()" />
+						<input type="button" class="mostrar" value="Condicional Compuesta"
+							onclick="mostrarCondicionalCompuesta()" />
+						<input type="button" class="mostrar" value="Error Lexico" onclick="mostrarErrorLexico()" />
 					</div>
-					<div id="asignacion-codigo1" style="position:absolute; top:10px; left:60%; display:none;">
-						<code>	
+					<div id="asignacion-codigo1"
+						style="position:absolute; top:10px; left:42%; display:none; border: 3px solid rgb(47, 0, 255);">
+						<code>
 								<br>
 								vacio principal VY()
 									<br>
@@ -87,6 +109,7 @@
 									<br>
 									<br>
 								&nbsp _variable1 = 5
+									<br>						
 								&nbsp _variable2 = 7
 									<br>
 									<br>
@@ -101,7 +124,8 @@
 							    YV
 						</code>
 					</div>
-					<div id="asignacion-codigo2" style="position:absolute; top:10px; left:60%; display:none;">
+					<div id="asignacion-codigo2"
+						style="position:absolute; top:10px; left:42%; display:none; border: 3px solid rgb(47, 0, 255);">
 						<code>
 								<br>
 								vacio principal VY()
@@ -113,13 +137,13 @@
 								&nbsp <-- Pasamos por parametro la variable _tamanio -->
 									<br>
 									<br>
-								&nbsp imprimir100numeros(_tamanio)
+								&nbsp imprimirNumeros(_tamanio)
 									<br>
 									<br>
 							    YV
 								<br>
 								<br>
-								vacio imprimir100numeros VY(entero _size)
+								vacio imprimirNumeros VY(entero _size)
 								<br>
 								<br>
 								&nbsp <-- Recibimos e imprimimos numeros del 1 a _size -->
@@ -128,15 +152,16 @@
 								&nbsp para ( entero _var = 0; _var < _size; _var++ ){
 								<br>
 								<br>
-								&nbsp&nbsp imprimir( _var )
+								&nbsp &nbsp imprimir( _var )
 										<br>
-								&nbsp &nbsp	}
+								&nbsp }
 								<br>
 								<br>
 								YV
 						</code>
 					</div>
-					<div id="asignacion-codigo3" style="position:absolute; top:10px; left:60%; display:none;">
+					<div id="asignacion-codigo3"
+						style="position:absolute; top:10px; left:42%; display:none; border: 3px solid rgb(47, 0, 255);">
 						<code>
 								<br>
 								vacio principal VY()
@@ -161,7 +186,8 @@
 							 YV
 						</code>
 					</div>
-					<div id="asignacion-codigo4" style="position:absolute; top:10px; left:60%; display:none;">
+					<div id="asignacion-codigo4"
+						style="position:absolute; top:10px; left:42%; display:none; border: 3px solid rgb(47, 0, 255);">
 						<code>
 								<br>
 								vacio principal VY()
@@ -183,7 +209,8 @@
 					
 						</code>
 					</div>
-					<div id="asignacion-codigo5" style="position:absolute; top:10px; left:60%; display:none;">
+					<div id="asignacion-codigo5"
+						style="position:absolute; top:10px; left:42%; display:none; border: 3px solid rgb(47, 0, 255);">
 						<code>
 								<br>
 								vacio principal VY()
@@ -209,21 +236,22 @@
 							    YV
 						</code>
 					</div>
-					<div id="asignacion-codigo6" style="position:absolute; top:10px; left:60%; display:none;">
+					<div id="asignacion-codigo6"
+						style="position:absolute; top:10px; left:42%; display:none; border: 3px solid rgb(255, 0, 0);">
 						<code>
 								<br>
-								vacio $VY()
+								vacio principal $VY()
 								<br>
 								<br>
-								&nbsp %entero _var = 5;
+								&nbsp %entero _var = 5
 								<br>
 								<br>
-								&nbsp impr8ir ( _var );
+								&nbsp impr8ir ( _var )
 								<br>
 								<br>
 								YV
 						</code>
-					</div>	
+					</div>
 				</fieldset>
 			</article>
 		</article>
