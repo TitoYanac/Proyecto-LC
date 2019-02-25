@@ -182,7 +182,8 @@ function  analisisSintactico() {
 	    bucleapertura++;
 	}
 	function validarCondicional() {
-			var e9=/^\s*sicumple\s*\(\s*(_[a-zA-Z][a-zA-Z0-9]*\s*<\s*_[a-zA-Z][a-zA-Z0-9]*|_[a-zA-Z][a-zA-Z0-9]*\s*<=\s*_[a-zA-Z][a-zA-Z0-9]*|_[a-zA-Z][a-zA-Z0-9]*\s*>\s*_[a-zA-Z][a-zA-Z0-9]*|_[a-zA-Z][a-zA-Z0-9]*\s*>=\s*_[a-zA-Z][a-zA-Z0-9]*|_[a-zA-Z][a-zA-Z0-9]*\s*==\s*_[a-zA-Z][a-zA-Z0-9]*|_[a-zA-Z][a-zA-Z0-9]*\s*<\s*[0-9]+|_[a-zA-Z][a-zA-Z0-9]*\s*<=\s*[0-9]+|_[a-zA-Z][a-zA-Z0-9]*\s*>\s*[0-9]+|_[a-zA-Z][a-zA-Z0-9]*\s*>=\s*[0-9]+|[0-9]+\s*<\s*_[a-zA-Z][a-zA-Z0-9]*|[0-9]+\s*<=\s*_[a-zA-Z][a-zA-Z0-9]*|[0-9]+\s*>\s*_[a-zA-Z][a-zA-Z0-9]*|[0-9]+\s*>=\s*_[a-zA-Z][a-zA-Z0-9]*|[0-9]+\s*<=\s*[0-9]+|[0-9]+\s*<\s*[0-9]+|[0-9]+\s*>\s*[0-9]+|[0-9]+\s*>=\s*[0-9]+|_[a-zA-Z][a-zA-Z0-9]*\s*==\s*_[a-zA-Z][a-zA-Z0-9]*|"[a-zA-Z0-9]*"\s*==\s*"[a-zA-Z0-9]*")\s*\)\s*{\s*$/; //expReg_asignacionCorta
+			var e9=/^\s*sicumple\s*\(\s*(_[a-zA-Z][a-zA-Z0-9]*|[0-9]*)\s*|((_[a-zA-Z][a-zA-Z0-9]*|[0-9]*)\s*(==|<|>|>=|<=)\s*(_[a-zA-Z][a-zA-Z0-9]*|[0-9]*)\s*)\)\s*$/; //expReg_asignacionCorta
+			
 			if (e9.test(sentenciaActual) == false){
 				var error="Sentencia de Si cumple incorrecta";
 				marcarError(m,error,sentenciaActual);
