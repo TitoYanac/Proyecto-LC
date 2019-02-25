@@ -44,4 +44,56 @@ op2.addEventListener("click", function(event) {
 	slide2.setAttribute("style", "opacity: 1; display: block;");
 });
 
+function mostrarAsignacion(){
+	document.getElementById('asignacion-codigo1').style.display = 'block';
+	document.getElementById('asignacion-codigo2').style.display = 'none';
+	document.getElementById('asignacion-codigo3').style.display = 'none';
+	document.getElementById('asignacion-codigo4').style.display = 'none';
+	document.getElementById('asignacion-codigo5').style.display = 'none';
+	document.getElementById('asignacion-codigo6').style.display = 'none';
+}
 
+function mostrarPara(){
+	document.getElementById('asignacion-codigo2').style.display = 'block';
+	document.getElementById('asignacion-codigo1').style.display = 'none';
+	document.getElementById('asignacion-codigo3').style.display = 'none';
+	document.getElementById('asignacion-codigo4').style.display = 'none';
+	document.getElementById('asignacion-codigo5').style.display = 'none';
+	document.getElementById('asignacion-codigo6').style.display = 'none';
+}
+
+function mostrarMientras(){
+	document.getElementById('asignacion-codigo3').style.display = 'block';
+	document.getElementById('asignacion-codigo1').style.display = 'none';
+	document.getElementById('asignacion-codigo2').style.display = 'none';
+	document.getElementById('asignacion-codigo4').style.display = 'none';
+	document.getElementById('asignacion-codigo5').style.display = 'none';
+	document.getElementById('asignacion-codigo6').style.display = 'none';
+}
+
+function mostrarCondicional(){
+	document.getElementById('asignacion-codigo4').style.display = 'block';
+	document.getElementById('asignacion-codigo1').style.display = 'none';
+	document.getElementById('asignacion-codigo2').style.display = 'none';
+	document.getElementById('asignacion-codigo3').style.display = 'none';
+	document.getElementById('asignacion-codigo5').style.display = 'none';
+	document.getElementById('asignacion-codigo6').style.display = 'none';
+}
+
+function mostrarCondicionalCompuesta(){
+	document.getElementById('asignacion-codigo5').style.display = 'block';
+	document.getElementById('asignacion-codigo1').style.display = 'none';
+	document.getElementById('asignacion-codigo2').style.display = 'none';
+	document.getElementById('asignacion-codigo3').style.display = 'none';
+	document.getElementById('asignacion-codigo4').style.display = 'none';
+	document.getElementById('asignacion-codigo6').style.display = 'none';
+}
+
+function mostrarErrorLexico(){
+	document.getElementById('asignacion-codigo6').style.display = 'block';
+	document.getElementById('asignacion-codigo1').style.display = 'none';
+	document.getElementById('asignacion-codigo2').style.display = 'none';
+	document.getElementById('asignacion-codigo3').style.display = 'none';
+	document.getElementById('asignacion-codigo4').style.display = 'none';
+	document.getElementById('asignacion-codigo5').style.display = 'none';
+}

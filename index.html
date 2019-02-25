@@ -18,11 +18,8 @@
 	<script type="text/javascript">
 		$(document).ready(function () {
 			//controles de eventos
-			$('#resultado-boton').click(function () { resultado(); });
 			$('#analisisLexico-boton').click(function () { analisisLexico(); });
 			$('#analisisSintactico-boton').click(function () { analisisSintactico(); });
-			$('#analisisSemantico-boton').click(function () { analisisSemantico(); });
-			$('#tablaSimbolos-boton').click(function () { tablaSimbolos(); });
 			$('#borrar-boton').click(function () { borrarCodigo(); });
 		});
 	</script>
@@ -42,7 +39,8 @@
 			<form id="codeform">
 				<fieldset>
 					<legend>Escribe tu Código aquí: </legend>
-					<textarea id="codigo" placeholder="Ingrese el código..." name="comment" form="codeform" spellcheck="false"></textarea>
+					<textarea id="codigo" placeholder="Ingrese el código..." name="comment" form="codeform"
+						spellcheck="false"></textarea>
 				</fieldset>
 			</form>
 			<aside id="codeLine">
@@ -52,7 +50,7 @@
 		<article id="areaAnalisis">
 			<article id="slide1">
 				<article id="areaAnalisisLexico">
-					<fieldset >
+					<fieldset>
 						<legend>Análisis Léxico: </legend>
 						<div id="analisisLexico"></div>
 					</fieldset>
@@ -64,23 +62,178 @@
 					</fieldset>
 				</article>
 			</article>
+		</article>
+		<article id="areaCodigosEjemplos">
 			<article id="slide2">
-				<article id="areaResultados">
-					<fieldset>
-						<legend>Resultados: </legend>
-						<textarea id="resultados" placeholder="Resultados..." name="comment" form="codeform"
-							disabled=true></textarea>
-					</fieldset>
-				</article>
+				<fieldset>
+					<legend>Códigos de Prueba: </legend>
+					<div id="botones-prueba">
+						<input type="button" class="mostrar" value="Asignacion" onclick="mostrarAsignacion()"/>
+						<input type="button" class="mostrar" value="Para" onclick="mostrarPara()"/>
+						<input type="button" class="mostrar" value="Mientras" onclick="mostrarMientras()"/>
+						<input type="button" class="mostrar" value="Condicional" onclick="mostrarCondicional()"/>
+						<input type="button" class="mostrar" value="Condicional Compuesta" onclick="mostrarCondicionalCompuesta()"/>
+						<input type="button" class="mostrar" value="Error Lexico" onclick="mostrarErrorLexico()"/>
+					</div>
+					<div id="asignacion-codigo1" style="position:absolute; top:10px; left:60%; display:none;">
+						<code>	
+								<br>
+								vacio principal VY()
+									<br>
+									<br>
+								&nbsp entero _variable1,_variable2 , _variable3
+									<br>
+								&nbsp cadena _variable4
+									<br>
+									<br>
+								&nbsp _variable1 = 5
+								&nbsp _variable2 = 7
+									<br>
+									<br>
+								&nbsp _variable3 = _variable1 + _variable2
+									<br>
+								&nbsp _variable4 = 10 + _variable3 
+									<br>
+									<br>
+								&nbsp imprimir( _variable4 )
+									<br>
+									<br>
+							    YV
+						</code>
+					</div>
+					<div id="asignacion-codigo2" style="position:absolute; top:10px; left:60%; display:none;">
+						<code>
+								<br>
+								vacio principal VY()
+									<br>
+									<br>
+								&nbsp entero _tamanio = 100
+									<br>
+									<br>
+								&nbsp <-- Pasamos por parametro la variable _tamanio -->
+									<br>
+									<br>
+								&nbsp imprimir100numeros(_tamanio)
+									<br>
+									<br>
+							    YV
+								<br>
+								<br>
+								vacio imprimir100numeros VY(entero _size)
+								<br>
+								<br>
+								&nbsp <-- Recibimos e imprimimos numeros del 1 a _size -->
+								<br>
+								<br>
+								&nbsp para ( entero _var = 0; _var < _size; _var++ ){
+								<br>
+								<br>
+								&nbsp&nbsp imprimir( _var )
+										<br>
+								&nbsp &nbsp	}
+								<br>
+								<br>
+								YV
+						</code>
+					</div>
+					<div id="asignacion-codigo3" style="position:absolute; top:10px; left:60%; display:none;">
+						<code>
+								<br>
+								vacio principal VY()
+								<br>
+								<br>
+								&nbsp entero _tamanio = 10
+								<br>
+								&nbsp cadena _mensaje = "hola"
+								<br>
+								&nbsp entero _var = 0
+								<br>
+								<br>
+								&nbsp mientras ( _tamanio > _var ) {
+									<br>
+									&nbsp &nbsp imprimir( _mensaje )
+								   <br>
+								   &nbsp &nbsp _var++
+								   <br>
+								&nbsp }	
+								<br>
+								<br>
+							 YV
+						</code>
+					</div>
+					<div id="asignacion-codigo4" style="position:absolute; top:10px; left:60%; display:none;">
+						<code>
+								<br>
+								vacio principal VY()
+								<br>
+								<br>
+								&nbsp boleano _variable1
+								<br>
+								&nbsp _variable1 = verdadero
+								<br>
+								<br>
+								&nbsp sicumple ( _variable1 ) {
+									<br>
+								&nbsp &nbsp	imprimir( "hola" ) 
+									<br>                   
+								&nbsp }
+								<br>
+								<br>
+							  YV
+					
+						</code>
+					</div>
+					<div id="asignacion-codigo5" style="position:absolute; top:10px; left:60%; display:none;">
+						<code>
+								<br>
+								vacio principal VY()
+								<br>
+								<br>
+								&nbsp entero _variable1
+								<br>
+								&nbsp _variable1 = 5
+								<br>
+								<br>
+								&nbsp sicumple (_var < 10 ) {
+									<br>
+								&nbsp &nbsp	imprimir( "mayor" )  
+									<br>           
+								&nbsp}
+							    sino {
+									<br>
+								&nbsp imprimir( "menor" ) 
+									<br>
+								&nbsp }
+								<br>
+								<br>
+							    YV
+						</code>
+					</div>
+					<div id="asignacion-codigo6" style="position:absolute; top:10px; left:60%; display:none;">
+						<code>
+								<br>
+								vacio $VY()
+								<br>
+								<br>
+								&nbsp %entero _var = 5;
+								<br>
+								<br>
+								&nbsp impr8ir ( _var );
+								<br>
+								<br>
+								YV
+						</code>
+					</div>	
+				</fieldset>
 			</article>
 		</article>
 	</section>
-		<div id="botones1">
-			<input type="button" id="analisisLexico-boton" value="Análisis Léxico" />
-		</div>
-		<div id="botones2">
-			<input type="button" id="analisisSintactico-boton" value="Análisis Sintáctico" />
-		</div>
+	<div id="botones1">
+		<input type="button" id="analisisLexico-boton" value="Análisis Léxico" />
+	</div>
+	<div id="botones2">
+		<input type="button" id="analisisSintactico-boton" value="Análisis Sintáctico" />
+	</div>
 	<div id="botones3">
 		<input type=image id="borrar-boton" src="images/borrador.png" width="55" height="55">
 	</div>
@@ -95,7 +248,7 @@
 				<p>Análisis Léxico<br>y Sintáctico</p>
 			</div>
 			<div class="oPmenu" id="t2">
-				<p>Mostrar Resultado</p>
+				<p>Códigos de Prueba</p>
 			</div>
 		</div>
 	</section>

@@ -63,21 +63,35 @@ textarea {
     line-height: 16px;
 }
 
-#areaResultados{
-	width: 100% !important;
+ #areaCodigosEjemplos{
+	position: absolute;
+	margin-left: 51%;
+	width: 47%;
 }
-#areaCodigo > #areaResultados > fieldset {
-	float: left;
+#areaCodigosEjemplos > fieldset {
 	width: 100%;
-	left: 20px;
 }
 
-#areaCodigo > #areaResultados > fieldset > textarea {
+#areaCodigosEjemplos > fieldset > textarea {
 	width: 100%;
-	height: 120px;
+	height: 220px;
 	font-size: 12px;
 	line-height: 16px;
 }
+
+#botones-prueba >input {
+	display: block;
+	margin-top: 10px;
+    margin-left: 15px;
+	margin-right: 15px;
+	font-size: 20px;
+    color: #ffffff;
+    background-color: #1883ba;
+    border-radius: 6px;
+	box-shadow: 0 0 10px rgb(53, 167, 110);
+}
+
+
 
 #areaAnalisis ,#areaAnalisis > article > article{
 	/*display: inline-block;*/
