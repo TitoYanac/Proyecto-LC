@@ -7,14 +7,18 @@ var analisis;
 var bucleapertura;
 var funcionapertura;
 var arrayDvariables;
-var k;
+var arrayDfunciones;
+var k,j;
 function inicializar() {
 	sentenciaActual ="";
 	analisis="";
-	m=0,n=0,k=0;
+	m=0,n=0,k=0,j=0;
 	bucleapertura=0;
 	funcionapertura=0;
 	arrayDvariables= new Array();
+	arrayDfunciones= new Array();
+	arrayDfunciones[j]="principal";
+	j++
 }
 function  analisisSintactico() {
 	inicializar();
@@ -52,6 +56,7 @@ function  analisisSintactico() {
 				marcarError(m,error,sentenciaActual);
 			}
 			AnalizarAperturaDeFuncion();
+			buscarFuncion();
 			siguienteToken();
 		}
 		while(ValidarSentencia()==true&&sentenciaActual!="$"){
@@ -118,6 +123,7 @@ function  analisisSintactico() {
 			break;
 			case "LlamarFuncion":
 				validarLlamadaDeFuncion();
+				agregarFuncion();
 			break;
 			case "cierreBucle":
 				var e6=/^\s*\}\s*$/; //expReg_cierreBucle
@@ -182,14 +188,40 @@ function  analisisSintactico() {
 	    bucleapertura++;
 	}
 	function validarCondicional() {
-			var e9=/^\s*sicumple\s*\(\s*(_[a-zA-Z][a-zA-Z0-9]*|[0-9]*)\s*|((_[a-zA-Z][a-zA-Z0-9]*|[0-9]*)\s*(==|<|>|>=|<=)\s*(_[a-zA-Z][a-zA-Z0-9]*|[0-9]*)\s*)\)\s*$/; //expReg_asignacionCorta
-			
-			if (e9.test(sentenciaActual) == false){
-				var error="Sentencia de Si cumple incorrecta";
-				marcarError(m,error,sentenciaActual);
-		    }
-		    bucleapertura++;
-		    buscarVariable();
+		var cont=0;
+		var e1=/^\s*sicumple\s*\(\s*\)\s*\{\s*$/; // sicumple ( ) {
+		if (e1.test(sentenciaActual) == true){
+			cont=1;
+	    }
+		var e2=/^\s*sicumple\s*\(\s*_[a-zA-Z][a-zA-Z0-9]*\s*\)\s*\{\s*$/; // sicumple ( _var ) {
+		if (e2.test(sentenciaActual) == true){
+			cont=1;
+	    }
+	    var e3=/^\s*sicumple\s*\(\s*_[a-zA-Z][a-zA-Z0-9]*\s*(==|<|<=|>|>=)\s*_[a-zA-Z][a-zA-Z0-9]*\s*\)\s*\{\s*$/; // sicumple ( _var op _var) {
+		if (e3.test(sentenciaActual) == true){
+			cont=1;
+	    }
+		var e4=/^\s*sicumple\s*\(\s*[0-9]+\s*(==|<|<=|>|>=)\s*[0-9]+\s*\)\s*\{\s*$/;  // sicumple ( num op num) {
+		if (e4.test(sentenciaActual) == true){
+			cont=1;
+	    }
+	    var e5=/^\s*sicumple\s*\(\s*[0-9]+\s*(==|<|<=|>|>=)\s*_[a-zA-Z][a-zA-Z0-9]*\s*\)\s*\{\s*$/;  // sicumple ( num op _var) {
+		if (e5.test(sentenciaActual) == true){
+			cont=1;
+	    }
+
+		var e6=/^\s*sicumple\s*\(\s*_[a-zA-Z][a-zA-Z0-9]*\s*(==|<|<=|>|>=)\s*[0-9]+\s*\)\s*\{\s*$/;  // sicumple ( _var op num) {
+		if (e6.test(sentenciaActual) == true){
+			cont=1;
+	    }
+
+		if (cont == 0){
+			var error="Sentencia de Si cumple incorrecta";
+			marcarError(m,error,sentenciaActual);
+	    }else{
+	    	bucleapertura++;
+	    }
+	    buscarVariable();
 	}
 	function validarLlamadaDeFuncion(){
 		var e5=/^\s*[a-zA-Z][a-zA-Z0-9]*\(\s*(\s*|"[a-zA-Z0-9]*"|_[a-zA-Z][a-zA-Z0-9]*)(\s*|,"[a-zA-Z0-9]*"|,_[a-zA-Z][a-zA-Z0-9]*)*\s*\)\s*$/;
@@ -221,7 +253,7 @@ function  analisisSintactico() {
 				cont=1;
 			}
 			if(cont==1 ){
-				if( aux2[i]==" " || aux2[i]==","|| aux2[i]==")"|| aux2[i]=="="|| aux2[i]=="+"){
+				if( aux2[i]==" " || aux2[i]==","|| aux2[i]==")"|| aux2[i]=="="|| aux2[i]=="+"|| aux2[i]=="<"|| aux2[i]==">"){
 					temporal[indice]=text;
 					text="";
 					indice++;
@@ -298,6 +330,42 @@ function  analisisSintactico() {
 		//console.log("arrayDvariables ");
 		//console.log(arrayDvariables);
 	}
+	function buscarFuncion() {
+		var temp=sentenciaActual.split(" ");
+		var cont=0;
+		var temp2=new Array();
+		var pos=0;
+		for (var i = 0; i < temp.length; i++) {
+			if(temp[i]!=""){
+				temp2[pos]=temp[i];
+				pos++;
+			}
+		}
+		for (var i = 0; i < arrayDfunciones.length; i++) {
+			if(temp2[1]==arrayDfunciones[i]){
+				cont++;
+			}
+		}
+		if (cont==0) {
+			var error="Funcion "+ temp2[1] +" no ha sido declarada.";
+			marcarError(m,error,sentenciaActual);
+		}
+		console.log(arrayDfunciones);
+	}
+	function agregarFuncion(){
+		var text="";
+		var temp=sentenciaActual.split("");
+		for (var i = 0; i < temp.length; i++) {
+			if( temp[i]=="("){
+				arrayDfunciones[j]=text;
+				j++;
+				text="";
+			}
+			if(temp[i]!=" "){
+				text+= temp[i];
+			}
+		}
+	}
 
 	function validarDeclaracionDeVariable(){
 		var e1=/^\s*(entero|decimal|boleano|cadena|caracter)\s+(_[a-zA-Z][a-zA-Z0-9]*|_[a-zA-Z][a-zA-Z0-9]*\s*=\s*(verdadero|falso|[0-9]*|[0-9]*\.[0-9]*|"[a-zA-Z0-9]*"|'[a-zA-Z0-9]'|''|_[a-zA-Z][a-zA-Z0-9]*)\s*((\/|\*|\-|\+)\s*([0-9]*|[0-9]*\.[0-9]*|"[a-zA-Z0-9]*"|'[a-zA-Z0-9]'|''|_[a-zA-Z][a-zA-Z0-9]*))*\s*)(\s*|,\s*_[a-zA-Z][a-zA-Z0-9]*\s*|,\s*_[a-zA-Z][a-zA-Z0-9]*\s*=\s*(verdadero|falso|[0-9]*|[0-9]*\.[0-9]*|"[a-zA-Z0-9]*"|'[a-zA-Z0-9]'|''|_[a-zA-Z][a-zA-Z0-9]*)\s*((\/|\*|\-|\+)\s*([0-9]*|[0-9]*\.[0-9]*|"[a-zA-Z0-9]*"|'[a-zA-Z0-9]'|''|_[a-zA-Z][a-zA-Z0-9]*))*\s*)+\s*$/; //expReg_declararVariable
@@ -307,13 +375,33 @@ function  analisisSintactico() {
 	    }
 	}
 	function validarBucleMientras() {
-		var e3=/^\s*mientras\s*\(\s*(\s*|_[a-zA-Z][a-zA-Z0-9]*\s*(<|>|<=|>=|==)\s*("[a-zA-Z0-9]*"|[0-9]*|_[a-zA-Z][a-zA-Z0-9]*)\s*)\s*\)\s*{\s*$/; //expReg_mientras
-		if (e3.test(sentenciaActual) == false){
+
+		var cont=0;
+		var e2=/^\s*mientras\s*\(\s*_[a-zA-Z][a-zA-Z0-9]*\s*\)\s*\{\s*$/; // mientras ( _var ) {
+		if (e2.test(sentenciaActual) == true){
+			cont=1;
+	    }
+	    var e3=/^\s*mientras\s*\(\s*_[a-zA-Z][a-zA-Z0-9]*\s*(==|<|<=|>|>=)\s*_[a-zA-Z][a-zA-Z0-9]*\s*\)\s*\{\s*$/; // mientras ( _var op _var) {
+		if (e3.test(sentenciaActual) == true){
+			cont=1;
+	    }
+	    var e5=/^\s*mientras\s*\(\s*[0-9]+\s*(==|<|<=|>|>=)\s*_[a-zA-Z][a-zA-Z0-9]*\s*\)\s*\{\s*$/;  // mientras ( num op _var) {
+		if (e5.test(sentenciaActual) == true){
+			cont=1;
+	    }
+
+		var e6=/^\s*mientras\s*\(\s*_[a-zA-Z][a-zA-Z0-9]*\s*(==|<|<=|>|>=)\s*[0-9]+\s*\)\s*\{\s*$/;  // mientras ( _var op num) {
+		if (e6.test(sentenciaActual) == true){
+			cont=1;
+	    }
+
+		if (cont == 0){
 			var error="Error de sintaxis Bucle mientras.";
 			marcarError(m,error,sentenciaActual);
-	    }else{
-	    	bucleapertura++;
 	    }
+	    bucleapertura++;
+	    	
+	    buscarVariable();
 	}
 
 	function validarBuclePara() {
