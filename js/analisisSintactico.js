@@ -221,7 +221,6 @@ function  analisisSintactico() {
 	    }else{
 	    	bucleapertura++;
 	    }
-	    buscarVariable();
 	}
 	function validarLlamadaDeFuncion(){
 		var e5=/^\s*[a-zA-Z][a-zA-Z0-9]*\(\s*(\s*|"[a-zA-Z0-9]*"|_[a-zA-Z][a-zA-Z0-9]*)(\s*|,"[a-zA-Z0-9]*"|,_[a-zA-Z][a-zA-Z0-9]*)*\s*\)\s*$/;
@@ -229,11 +228,15 @@ function  analisisSintactico() {
 			var error="error de sintaxis en llamar función.";
 			marcarError(m,error,sentenciaActual);
 	    }
-	    buscarVariable();
 	}
 	function validarAsignacion() {
 		var e2=/^\s*_[a-zA-Z][a-zA-Z0-9]*\s*=\s*(verdadero|falso|[0-9]*|[0-9]*\.[0-9]*|"[a-zA-Z0-9]*"|'[a-zA-Z0-9]'|''|_[a-zA-Z][a-zA-Z0-9]*)\s*((\/|\*|\-|\+)\s*([0-9]*|[0-9]*\.[0-9]*|"[a-zA-Z0-9]*"|'[a-zA-Z0-9]'|''|_[a-zA-Z][a-zA-Z0-9]*))*\s*\s*$/; //expReg_asignarValor
 		if (e2.test(sentenciaActual) == false){
+			var error="Sentencia asignar valor a una variable incorrecta.";
+			marcarError(m,error,sentenciaActual);
+	    }
+	    var e3=/^\s*_[a-zA-Z][a-zA-Z0-9]*\s*=\s*$/;
+	    if (e3.test(sentenciaActual) == true){
 			var error="Sentencia asignar valor a una variable incorrecta.";
 			marcarError(m,error,sentenciaActual);
 	    }
