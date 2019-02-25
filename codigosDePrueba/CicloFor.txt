@@ -10,8 +10,8 @@ YV
 
 vacio imprimirNumeros VY(entero _size)
 
-  <-- Recibimos e imprimimos numeros del 1 a _size -->
-
+  <-- imprimimos numeros del 1 a _size -->
+  
    para ( entero _var = 0; _var < _size; _var++ ){
 
         imprimir( _var )

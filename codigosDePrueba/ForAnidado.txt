@@ -1,0 +1,19 @@
+vacio principal VY()
+
+  boleano _variable1
+  _variable1 = 5
+
+ boleano _variable3 = verdadero
+
+  para ( entero _var = 0; _var < _size; _var++ ){ 
+       para ( entero _var2 = 0; _var2 < _size; _var2++ ){ 
+                        sicumple(_variable3){
+                                       imprimir( _var )
+                        }
+                              
+       }
+   
+  } 
+
+
+YV

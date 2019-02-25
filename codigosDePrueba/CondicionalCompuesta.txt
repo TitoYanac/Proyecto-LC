@@ -3,7 +3,7 @@ vacio principal VY()
   entero _variable1
   _variable1 = 5
 
-  sicumple (_var < 10 ) {
+  sicumple (_variable1 < 10 ) {
       imprimir( "mayor" )             
   }
   sino {
