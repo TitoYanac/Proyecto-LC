@@ -204,7 +204,6 @@ function  analisisSintactico() {
 			var error="Sentencia asignar valor a una variable incorrecta.";
 			marcarError(m,error,sentenciaActual);
 	    }
-	    buscarVariable();
 	}
 
 	function buscarVariable() {
@@ -238,12 +237,10 @@ function  analisisSintactico() {
 			indice++;
 			cont=2;
 		}
-		console.log("array temporal");
-		console.log(temporal);
-		console.log("arrayDvariables");
-		console.log(arrayDvariables);
+
 		for (var t = 0; t < temporal.length; t++) {
 			for (var p = 0; p < arrayDvariables.length; p++) {
+				console.log("comparando: ("+t+","+p+") "+temporal[t]+" | "+arrayDvariables[p]);
 				if(arrayDvariables[p]==temporal[t]){
 					encontrado++;
 				}
@@ -252,11 +249,11 @@ function  analisisSintactico() {
 				var error="Variable "+temporal[t] +" no declarada";
 				marcarError(m,error,sentenciaActual);
 			}
+			encontrado=0;
 		}
 	}
 	function noencontrado(valor) {
 		for (var i = 0; i < arrayDvariables.length; i++) {
-			console.log("comparando: "+ valor +" | "+ arrayDvariables[i]);
 			if(arrayDvariables[i]==valor) return false;
 		}
 		return true;
